@@ -10,14 +10,12 @@
     "allowJs": true,
     "experimentalDecorators": true
   },
-  "files": [
-    "src/index.ts"
-  ],
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "dist"
   ]
 }

@@ -6,7 +6,7 @@
     "standard"
   ],
   "parserOptions": {
-    "ecmaVersion": 2016,
+    "ecmaVersion": 2017,
     "sourceType": "module",
     "ecmaFeatures": {
       "globalReturn": false,
@@ -39,7 +39,7 @@
     "semi": ["warn", "always"],
     "indent": ["error", 2],
     "no-undef": "off",
-    "no-console": "warn",
+    "no-console": "off",
     "no-multi-spaces": "off"
   }
 }

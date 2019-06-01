@@ -3,4 +3,6 @@ $width: 100%;
 #app {
   width: $width;
   height: 100%;
+  transform: rotate(51deg);
+  box-shadow: 1px 2px 3px rgba($color: #000000, $alpha: 1.0);
 }
