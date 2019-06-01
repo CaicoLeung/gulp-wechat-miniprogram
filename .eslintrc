@@ -1,0 +1,45 @@
+{
+  "parser": "babel-eslint",
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "globalReturn": false,
+      "impliedStrict": false,
+      "jsx": false
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "commonjs": false,
+    "mocha": true
+  },
+  "globals": {
+    "App": true,
+    "Component": true
+  },
+  "rules": {
+    "eqeqeq": "warn",
+    "curly": "off",
+    "no-cond-assign": "error",
+    "guard-for-in": "warn",
+    "block-scoped-var": "warn",
+    "class-methods-use-this": "warn",
+    "default-case": "warn",
+    "no-alert": "error",
+    "no-empty-function": "error",
+    "no-extend-native": "error",
+    "semi": ["warn", "always"],
+    "indent": ["error", 2],
+    "no-undef": "off",
+    "no-console": "warn",
+    "no-multi-spaces": "off"
+  }
+}

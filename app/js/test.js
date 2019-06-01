@@ -1,10 +1,10 @@
 class Person {
-  constructor(name, age) {
+  constructor (name, age) {
     this.name = name;
     this.age = age;
   }
 
-  sayHi() {
+  sayHi () {
     return `I am ${this.name}, ${this.age} yeads old`;
   }
 }

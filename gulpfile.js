@@ -1,24 +1,31 @@
-const gulp   = require('gulp');
-const sass   = require('gulp-sass');
+const gulp       = require('gulp');
+const sass       = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const ts = require('gulp-typescript');
-const jshint = require('gulp-jshint');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const rename = require('gulp-rename');
+const ts         = require('gulp-typescript');
+const eslint = require('gulp-eslint')
+const concat     = require('gulp-concat');
+const uglify     = require('gulp-uglify');
+const rename     = require('gulp-rename');
+const del   = require('del');
+const colors = require('colors');
 
-sass.compiler = require('node-sass');
+gulp.task('clean', async function() {
+  const deletePaths = await del('dist/**/*', {
+    dryRun: true
+  });
+  console.log(colors.red('Files and folders that would be deleted:\n') + colors.yellow(deletePaths.join('\n')));
+});
 
-gulp.task('sass', function() {
+gulp.task('sass', gulp.series('clean', function() {
   return gulp.src('app/scss/**/*.+(scss|sass)')
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(sourcemaps.write('./maps'))
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist/css'));
-});
+}));
 
 gulp.task('sass:watch', function() { 
-  gulp.watch('app/scss/**/*.+(scss|sass)', ['sass']);
+  gulp.watch('app/scss/**/*.+(scss|sass)', gulp.series('sass'));
 });
 
 gulp.task('ts', function() {
@@ -29,12 +36,9 @@ gulp.task('ts', function() {
     .pipe(gulp.dest('dist/js'));
 });
 
-// gulp.task('lint', function() {
-//   gulp.src('app/js/**/*.+(js|ts)')
-//       .pipe(jshint())
-//       .pipe(jshint.reporter('default'));
-// });
-
-// gulp.task('default', function() {
-//   gulp.run('lint', 'sass');
-// });
+gulp.task('lint', function() {
+  return gulp.src('app/js/**/*.+(js|ts)')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
