@@ -4,5 +4,16 @@
             open-type="getUserInfo"
             bind:getUserInfo="getUserInfo"
     >获取头像昵称</button>
+    <block wx:else>
+      <image class="userinfo-avatar" 
+            src="{{userInfo.avatarUrl}}" 
+            mode="aspectFill" 
+            lazy-load="false">
+      </image>
+      <text class="userinfo-nickname">{{userInfo.nickname}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
   </view>
 </view>
