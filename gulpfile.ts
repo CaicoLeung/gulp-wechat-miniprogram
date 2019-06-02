@@ -1,7 +1,5 @@
 import { Options } from "gulp-autoprefixer";
-import { async } from "q";
 
-const path         = require('path');
 const gulp         = require('gulp');
 const babel        = require('gulp-babel');
 const sassParse    = require('gulp-sass');
@@ -24,7 +22,7 @@ const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/template.wxml`];
 const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/template/*.+(sass|scss)`];
 const jsonFiles = [`${appPath}/*.json`, `!${appPath}/template/*json`];
 const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/template/*ts`, `!${appPath}/*.d.ts`];
-const imgFiles  = [`${appPath}/assets/img/**/*.{png.jpg.gif.ico}`]
+const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
 const tsProject = ts.createProject('tsconfig.json', {
   noLib      : true,
   declaration: false
@@ -87,10 +85,10 @@ gulp.task(images);
 gulp.task('build', gulp.series('clean', gulp.parallel('wxml', 'typescript', 'json', 'sass', 'images')));
 
 // watch
-gulp.task('watch', () => {
+gulp.task('watch', gulp.series('build', () => {
   gulp.watch(sassFiles, sass);
   gulp.watch(tsFiles, typescript);
   gulp.watch(imgFiles, images);
   gulp.watch(jsonFiles, json);
   gulp.watch(wxmlFiles, wxml);
-});
+}));
