@@ -4,8 +4,8 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "lint": "gulp lint",
-    "sass:watch": "gulp sass:watch"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "author": "caico",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "gulp-autoprefixer": "^6.1.0",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.0.0",
     "gulp-jshint": "^2.1.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",

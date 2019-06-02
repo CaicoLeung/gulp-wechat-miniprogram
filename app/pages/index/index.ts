@@ -1,4 +1,5 @@
 /// <reference path="../../../typings/index.d.ts" />
+
 import { IMyApp } from '../../app';
 
 const app = getApp<IMyApp>();
@@ -29,7 +30,7 @@ Page({
       }
     } else {
       wx.getUserInfo({
-        success: (res: wx.GetUserInfoSuccessCallbackResult) {
+        success: (res: wx.GetUserInfoSuccessCallbackResult) => {
           app.globalData.userInfo = res.userInfo;
           this.setData({
             userInfo: res.userInfo,
