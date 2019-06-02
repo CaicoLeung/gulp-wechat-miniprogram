@@ -23,6 +23,7 @@
   },
   "globals": {
     "App": true,
+    "Page": true,
     "Component": true
   },
   "rules": {

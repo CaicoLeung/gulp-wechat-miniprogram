@@ -1,0 +1,20 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"miniprogramRoot": "miniprogram/",
+	"compileType": "miniprogram",
+	"libVersion": "2.4.0",
+	"projectname": "miniprogram-test-1",
+	"scripts": {
+		"beforeCompile": "npm run tsc",
+		"beforePreview": "npm run tsc",
+		"beforeUpload": "npm run tsc"
+	},
+	"setting": {},
+	"appid": "wxfc1524afdcce110d",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}
