@@ -19,7 +19,7 @@ App({
     });
 
     wx.getSetting({
-      success(_res: wx.GetSettingSuccessCallbackResult) {
+      success: (_res: wx.GetSettingSuccessCallbackResult) => {
         if(_res.authSetting['scope.userInfo']) {
           wx.getUserInfo({
             success: (res: wx.GetUserInfoSuccessCallbackResult) => {
