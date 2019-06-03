@@ -4,13 +4,13 @@ const app = getApp<IMyApp>();
 Page({
   data: {
     motto: '点击"编译"以构建',
-    userInfo: {},
-    hasUserInfo: false,
+    userInfo: {} as wx.UserInfo,
+    hasUserInfo: false as boolean,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   bindViewTap() {
     wx.navigateTo({
-      url: ''
+      url: '/pages/log/log'
     })
   },
   onLoad() {
@@ -37,6 +37,7 @@ Page({
         }
       })
     }
+    console.log(this.data.userInfo);
   },
   getUserInfo(e: any) {
     app.globalData.userInfo = e.detail.userInfo;

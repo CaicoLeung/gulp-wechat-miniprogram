@@ -108,7 +108,7 @@ let appJson = readAppJson();
 const create = () => {
   if (argv.page) target = argv.page;
   if (appJson.pages) {
-    appJson.pages.push(`/pages/${target}/${target}`);
+    appJson.pages.push(`pages/${target}/${target}`);
     writeAppJson(JSON.stringify(appJson));
   }
   return gulp.src(path.join(source, '*.*'))

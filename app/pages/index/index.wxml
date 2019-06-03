@@ -8,12 +8,14 @@
       <image class="userinfo-avatar" 
             src="{{userInfo.avatarUrl}}" 
             mode="aspectFill" 
-            lazy-load="false">
+            lazy-load="false"
+            bind:tap="bindViewTap"
+      >
       </image>
-      <text class="userinfo-nickname">{{userInfo.nickname}}</text>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <button class="user-motto">{{motto}}</button>
   </view>
 </view>
