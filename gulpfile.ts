@@ -1,4 +1,5 @@
 import { Options } from "gulp-autoprefixer";
+import { readAppJson, writeAppJson } from "./gulp/json";
 
 const gulp         = require('gulp');
 const path         = require('path');
@@ -102,9 +103,14 @@ const optEnum = {
 };
 const argv = yargs.argv;
 let target = 'test';
+let appJson = readAppJson();
 
 const create = () => {
   if (argv.page) target = argv.page;
+  if (appJson.pages) {
+    appJson.pages.push(`/pages/${target}/${target}`);
+    writeAppJson(JSON.stringify(appJson));
+  }
   return gulp.src(path.join(source, '*.*'))
     .pipe(rename({
       dirname: target,
