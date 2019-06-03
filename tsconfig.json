@@ -11,7 +11,7 @@
     "experimentalDecorators": true
   },
   "include": [
-    "app/**/*"
+    "/app/**/*"
   ],
   "exclude": [
     "node_modules",
