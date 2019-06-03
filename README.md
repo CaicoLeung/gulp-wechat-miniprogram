@@ -21,7 +21,10 @@
   ```
   $ cd gulp-wechat-miniprogram && npm install
   ```
-
+4. 创建page
+  ```
+  $ gulp create --page [name]
+  ```
 4. 编译代码, 生成dist目录, 用微信开发者工具打开dist目录
   ```
   $ npm run build

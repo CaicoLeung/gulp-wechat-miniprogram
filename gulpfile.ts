@@ -1,6 +1,7 @@
 import { Options } from "gulp-autoprefixer";
 
 const gulp         = require('gulp');
+const path         = require('path');
 const babel        = require('gulp-babel');
 const sassParse    = require('gulp-sass');
 const imagemin     = require('gulp-imagemin');
@@ -15,18 +16,21 @@ const uglify       = require('gulp-uglify');
 const rename       = require('gulp-rename');
 const del          = require('del');
 const colors       = require('colors');
+const yargs        = require('yargs');
 
 const appPath   = 'app/**';
 const distPath  = 'dist';
-const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/template.wxml`];
-const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/template/*.+(sass|scss)`];
-const jsonFiles = [`${appPath}/*.json`, `!${appPath}/template/*json`];
-const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/template/*ts`, `!${appPath}/*.d.ts`];
+const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/_template/*.wxml`];
+const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/_template/*.+(sass|scss)`];
+const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`];
+const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/*.d.ts`];
 const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
 const tsProject = ts.createProject('tsconfig.json', {
   noLib      : true,
   declaration: false
 });
+const root = path.join(__dirname, 'app/pages');
+const source = `${appPath}/_template`;
 
 const clean = async () => {
   const deletePaths = await del('dist/**');
@@ -92,3 +96,20 @@ gulp.task('watch', gulp.series('build', () => {
   gulp.watch(jsonFiles, json);
   gulp.watch(wxmlFiles, wxml);
 }));
+
+const optEnum = {
+  p: 'page'
+};
+const argv = yargs.argv;
+let target = 'test';
+
+const create = () => {
+  if (argv.page) target = argv.page;
+  return gulp.src(path.join(source, '*.*'))
+    .pipe(rename({
+      dirname: target,
+      basename: target
+    }))
+    .pipe(gulp.dest(path.join(root)));
+};
+gulp.task(create);
