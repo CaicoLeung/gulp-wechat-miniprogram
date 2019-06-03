@@ -25,7 +25,7 @@
   ```
   $ gulp create --page [name]
   ```
-4. 编译代码, 生成dist目录, 用微信开发者工具打开dist目录
+5. 编译代码, 生成dist目录, 用微信开发者工具打开dist目录
   ```
   $ npm run build
   $ npm run watch
