@@ -6,6 +6,7 @@
 2. 支持Scss, Sass
 3. 支持Eslint
 4. 支持图片压缩
+5. 支持命令行创建page目录(含wxml, ts, wxss, json)
 
 ## 开始使用
 1. 确保已全局安装gulp
@@ -21,7 +22,7 @@
   ```
   $ cd gulp-wechat-miniprogram && npm install
   ```
-4. 创建page
+4. 创建page, 会自动添加app.json的"pages"条目
   ```
   $ gulp create --page [name]
   ```

@@ -1,8 +1,8 @@
-import { Options } from "gulp-autoprefixer";
+import { Options }                   from "gulp-autoprefixer";
 import { readAppJson, writeAppJson } from "./gulp/json";
+import * as path                     from 'path';
+import * as gulp                     from 'gulp';
 
-const gulp         = require('gulp');
-const path         = require('path');
 const babel        = require('gulp-babel');
 const sassParse    = require('gulp-sass');
 const imagemin     = require('gulp-imagemin');
