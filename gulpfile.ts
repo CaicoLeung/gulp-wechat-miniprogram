@@ -26,7 +26,6 @@ const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass
 const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`];
 const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/*.d.ts`];
 const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`];
-const projectConfigJson = './project.config.json';
 const tsProject = ts.createProject('tsconfig.json', {
   noLib      : true,
   declaration: false
@@ -87,14 +86,8 @@ const images = () => {
 };
 gulp.task(images);
 
-const projectConfig = () => {
-  return gulp.src(projectConfigJson, {since: gulp.lastRun(projectConfig)})
-    .pipe(gulp.dest(distPath));
-};
-gulp.task(projectConfig);
-
 // parallel
-gulp.task('build', gulp.series('clean', gulp.parallel('wxml', 'typescript', 'json', 'sass', 'images', 'projectConfig')));
+gulp.task('build', gulp.series('clean', gulp.parallel('wxml', 'typescript', 'json', 'sass', 'images')));
 
 // watch
 gulp.task('watch', gulp.series('build', () => {
