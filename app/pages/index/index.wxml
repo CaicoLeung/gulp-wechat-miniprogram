@@ -12,7 +12,7 @@
             bind:tap="bindViewTap"
       >
       </image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">Hello {{userInfo.nickName}}!</text>
     </block>
   </view>
   <view class="usermotto">
