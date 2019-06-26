@@ -8,15 +8,19 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "allowJs": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipDefaultLibCheck": true,
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017"
+    ]
   },
   "include": [
-    "/app/**/*"
+    "app/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts",
-    "**/*.d.ts",
     "dist",
     "typings"
   ]

@@ -13,7 +13,8 @@ Page({
       url: '/pages/log/log'
     })
   },
-  onLoad() {
+  onLoad(query: { [queryKey: string]: string }) {
+    let str: string = 10 + 2;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
