@@ -14,8 +14,8 @@ Page({
     })
   },
   onLoad(query: { [queryKey: string]: string }) {
-    let str: string = 10 + 2;
-    if (app.globalData.userInfo) {
+    console.log(app.globalData.userInfo)
+    if (Object.keys(app.globalData.userInfo).length) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
@@ -35,10 +35,12 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+        },
+        fail: (err: wx.GeneralCallbackResult) => {
+          console.log(err.errMsg)
         }
       })
     }
-    console.log(this.data.userInfo);
   },
   getUserInfo(e: any) {
     app.globalData.userInfo = e.detail.userInfo;
@@ -46,5 +48,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    console.log(this.data.userInfo)
   }
 })

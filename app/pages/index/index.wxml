@@ -2,7 +2,7 @@
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}"
             open-type="getUserInfo"
-            bind:getUserInfo="getUserInfo"
+            bind:getuserinfo="getUserInfo"
     >获取头像昵称</button>
     <block wx:else>
       <image class="userinfo-avatar" 

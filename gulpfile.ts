@@ -3,17 +3,17 @@ import { readAppJson, writeAppJson } from "./gulp/json";
 import * as path                     from 'path';
 import * as gulp                     from 'gulp';
 
-const babel        = require('gulp-babel');
+// const babel        = require('gulp-babel');
 const sassParse    = require('gulp-sass');
 const imagemin     = require('gulp-imagemin');
-const postcss      = require('gulp-postcss');
-const cssnano      = require('cssnano');
+// const postcss      = require('gulp-postcss');
+// const cssnano      = require('cssnano');
 const sourcemaps   = require('gulp-sourcemaps');
 const ts           = require('gulp-typescript');
-const eslint       = require('gulp-eslint')
+// const eslint       = require('gulp-eslint')
 const autoprefixer = require('gulp-autoprefixer');
-const concat       = require('gulp-concat');
-const uglify       = require('gulp-uglify');
+// const concat       = require('gulp-concat');
+// const uglify       = require('gulp-uglify');
 const rename       = require('gulp-rename');
 const del          = require('del');
 const colors       = require('colors');
@@ -26,10 +26,7 @@ const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass
 const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`];
 const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/*.d.ts`];
 const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`];
-const tsProject = ts.createProject('tsconfig.json', {
-  noLib      : true,
-  declaration: false
-});
+const tsProject = ts.createProject('tsconfig.json');
 const root = path.join(__dirname, 'app/pages');
 const source = `${appPath}/_template`;
 
@@ -49,7 +46,7 @@ const typescript = () => {
   return gulp.src(tsFiles, {since: gulp.lastRun(typescript)})
   .pipe(sourcemaps.init())
   .pipe(tsProject())
-  .on('error', () => {console.error("虽然报错了, 但是不影响编译结果, 先不管, 后面再解决")})
+  .on('error', (err: any) => {console.error(err)})
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(distPath));
 };
