@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/home/index"
+    "pages/home/index",
+    "pages/my/index",
+    "pages/publish/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,20 +19,20 @@
     "list": [
       {
         "pagePath": "pages/home/index",
-        "iconPath": "/static/tabbar/faxian@2x.png",
-        "selectedIconPath": "/static/tabbar/faxian-select@2x.png",
+        "iconPath": "/assets/img/tabbar/faxian@2x.png",
+        "selectedIconPath": "/assets/img/tabbar/faxian-select@2x.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/publish/index",
-        "iconPath": "/static/tabbar/fabu-select@2x.png",
-        "selectedIconPath": "/static/tabbar/fabu-select@2x.png",
+        "iconPath": "/assets/img/tabbar/fabu-select@2x.png",
+        "selectedIconPath": "/assets/img/tabbar/fabu-select@2x.png",
         "text": ""
       },
       {
         "pagePath": "pages/my/index",
-        "iconPath": "/static/tabbar/wode-not@2x.png",
-        "selectedIconPath": "/static/tabbar/wode@2x.png",
+        "iconPath": "/assets/img/tabbar/wode-not@2x.png",
+        "selectedIconPath": "/assets/img/tabbar/wode@2x.png",
         "text": "我的"
       }
     ]

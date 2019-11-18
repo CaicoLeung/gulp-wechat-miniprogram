@@ -42,6 +42,13 @@ Page({
       })
     }
   },
+  onShow (): void {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
   getUserInfo (e: any) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

@@ -84,13 +84,13 @@ const images = () => {
 gulp.task(images);
 
 // parallel
-gulp.task('build', gulp.series('clean', gulp.parallel('wxml', 'typescript', 'json', 'sass', 'images')));
+gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxml', 'typescript', 'json', 'sass')));
 
 // watch
 gulp.task('watch', gulp.series('build', () => {
+  gulp.watch(imgFiles, images);
   gulp.watch(sassFiles, sass);
   gulp.watch(tsFiles, typescript);
-  gulp.watch(imgFiles, images);
   gulp.watch(jsonFiles, json);
   gulp.watch(wxmlFiles, wxml);
 }));
@@ -105,13 +105,13 @@ let appJson = readAppJson();
 const create = () => {
   if (argv.page) target = argv.page;
   if (appJson.pages) {
-    appJson.pages.push(`pages/${target}/${target}`);
+    appJson.pages.push(`pages/${target}/index`);
     writeAppJson(JSON.stringify(appJson));
   }
   return gulp.src(path.join(source, '*.*'))
     .pipe(rename({
       dirname: target,
-      basename: target
+      basename: 'index'
     }))
     .pipe(gulp.dest(path.join(root)));
 };

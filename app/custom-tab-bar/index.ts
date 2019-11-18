@@ -1,19 +1,23 @@
-
 Component({
   data: {
     selected: 0,
-    color: '#7A7E83',
-    selectedColor: '#3cc51f',
+    color: '#4A4A4A',
+    selectedColor: '#FF335F',
     list: [{
-      pagePath: '/home/home',
-      iconPath: '/image/icon_component.png',
-      selectedIconPath: '/image/icon_component_HL.png',
-      text: '组件'
+      pagePath: '/pages/home/index',
+      iconPath: '/assets/img/tabbar/faxian@2x.png',
+      selectedIconPath: '/assets/img/tabbar/faxian-select@2x.png',
+      text: '首页'
     }, {
-      pagePath: '/home/index2',
-      iconPath: '/image/icon_API.png',
-      selectedIconPath: '/image/icon_API_HL.png',
-      text: '接口'
+      pagePath: '/pages/publish/index',
+      iconPath: '/assets/img/tabbar/fabu-select@2x.png',
+      selectedIconPath: '/assets/img/tabbar/fabu-select@2x.png',
+      text: ''
+    }, {
+      pagePath: '/pages/my/index',
+      iconPath: '/assets/img/tabbar/wode-not@2x.png',
+      selectedIconPath: '/assets/img/tabbar/wode@2x.png',
+      text: '我的'
     }]
   },
   methods: {
