@@ -1,16 +1,23 @@
+cover-view {
+  overflow: scroll;
+}
+
 .tab-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: 114rpx;
   background: white;
   display: flex;
+  align-items: flex-end;
   padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -4rpx 6rpx 0 rgba(0,0,0,0.03);
 }
 
 .tab-bar-border {
-  background-color: rgba(0, 0, 0, 0.33);
+  //background-color: rgba(0, 0, 0, 0.33);
+  background-color: #ffffff;
   position: absolute;
   left: 0;
   top: 0;
@@ -21,18 +28,30 @@
 
 .tab-bar-item {
   flex: 1;
+  height: 100rpx;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  cover-image {
+    width: 48rpx;
+    height: 48rpx;
+  }
+  .tabbar-name {
+    margin-top: 6rpx;
+    font-size: 22rpx;
+  }
 }
 
-.tab-bar-item cover-image {
-  width: 27px;
-  height: 27px;
-}
+.tab-bar-item2 {
+  width: 114rpx;
+  height: 114rpx;
+  z-index: 10;
 
-.tab-bar-item cover-view {
-  font-size: 10px;
+  cover-image {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+  }
 }
