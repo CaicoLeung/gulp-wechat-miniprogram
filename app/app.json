@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/index",
     "pages/my/index",
-    "pages/publish/index"
+    "pages/publish/index",
+    "pages/test/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
