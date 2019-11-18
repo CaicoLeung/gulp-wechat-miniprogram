@@ -1,5 +1,5 @@
-import { Options }                   from "gulp-autoprefixer";
-import { readAppJson, writeAppJson } from "./gulp/json";
+import { Options }                   from 'gulp-autoprefixer';
+import { readAppJson, writeAppJson } from './gulp/json';
 import * as path                     from 'path';
 import * as gulp                     from 'gulp';
 
@@ -37,23 +37,23 @@ const clean = async () => {
 gulp.task(clean);
 
 const wxml = () => {
-  return gulp.src(wxmlFiles, {since: gulp.lastRun(wxml)})
+  return gulp.src(wxmlFiles, { since: gulp.lastRun(wxml) })
     .pipe(gulp.dest(distPath));
 };
 gulp.task(wxml);
 
 const typescript = () => {
-  return gulp.src(tsFiles, {since: gulp.lastRun(typescript)})
-  .pipe(sourcemaps.init())
-  .pipe(tsProject())
-  .on('error', (err: any) => {console.error(err)})
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest(distPath));
+  return gulp.src(tsFiles, { since: gulp.lastRun(typescript) })
+    .pipe(sourcemaps.init())
+    .pipe(tsProject())
+    .on('error', (err: any) => { console.error(err) })
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(distPath));
 };
 gulp.task(typescript);
 
 const json = () => {
-  return gulp.src(jsonFiles, {since: gulp.lastRun(json)})
+  return gulp.src(jsonFiles, { since: gulp.lastRun(json) })
     .pipe(gulp.dest(distPath))
 };
 gulp.task(json)
@@ -66,7 +66,7 @@ const sass = () => {
   };
   return gulp.src(sassFiles)
     .pipe(sourcemaps.init())
-    .pipe(sassParse({outputStyle: 'compressed'}).on('error', sassParse.logError))
+    .pipe(sassParse({ outputStyle: 'compressed' }).on('error', sassParse.logError))
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(rename({
       extname: '.wxss'
@@ -77,7 +77,7 @@ const sass = () => {
 gulp.task(sass);
 
 const images = () => {
-  return gulp.src(imgFiles, {since: gulp.lastRun(images)})
+  return gulp.src(imgFiles, { since: gulp.lastRun(images) })
     .pipe(imagemin())
     .pipe(gulp.dest(distPath));
 };
