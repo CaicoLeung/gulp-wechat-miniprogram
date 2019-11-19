@@ -1,3 +1,38 @@
 .publish-main-container {
-
+  .selected-img-pre {
+    padding: 41rpx 30rpx;
+    display: flex;
+    align-items: center;
+    .add-img-hander {
+      width: 130rpx;
+      height: 130rpx;
+      border-radius: 6rpx;
+      background: #F8F8F8;
+      position: relative;
+      &:before {
+        content: '';
+        display: block;
+        width: 4rpx;
+        height: 62rpx;
+        background: #999999;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+      }
+      &:after {
+        content: '';
+        display: block;
+        width: 62rpx;
+        height: 4rpx;
+        background: #999999;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+      }
+    }
+  }
 }
