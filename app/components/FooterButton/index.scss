@@ -1,0 +1,26 @@
+.publish-main-container {
+  position: fixed;
+  width: 100%;
+  height: 114rpx;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .publish-main-button {
+    width: 92%;
+    height: 90rpx;
+    background-image: linear-gradient(to right, #FE6495, #F44A48);
+    text-align: center;
+    display: table;
+    border-radius: 45rpx;
+    text {
+      display: table-cell;
+      vertical-align: middle;
+      color: #FFFFFF;
+      font-size: 32rpx;
+      font-weight: 600;
+    }
+  }
+}

@@ -39,7 +39,7 @@
     "no-alert": "error",
     "no-empty-function": "error",
     "no-extend-native": "error",
-    "semi": ["off", "always"],
+    "semi": ["error", "never"],
     "indent": ["error", 2],
     "no-undef": "off",
     "no-console": "off",

@@ -9158,7 +9158,7 @@ logger.warn({str: 'hello world'}, 'warn log', 100, [1, 2, 3])
 *
 * ```js
 wx.request({
-  url: 'test.php', //仅为示例，并非真实的接口地址
+  url: 'FooterButton.php', //仅为示例，并非真实的接口地址
   data: {
     x: '',
     y: ''
@@ -9250,7 +9250,7 @@ wx.chooseImage({
       filePath: tempFilePaths[0],
       name: 'file',
       formData: {
-        'user': 'test'
+        'user': 'FooterButton'
       },
       success (res){
         const data = res.data
@@ -9735,7 +9735,7 @@ wx.closeBluetoothAdapter({
 *
 * ```js
 wx.connectSocket({
-  url: 'test.php'
+  url: 'FooterButton.php'
 })
 
 //注意这里有时序问题，
@@ -10632,7 +10632,7 @@ success(res) {
 *
 * ```js
 wx.navigateTo({
-  url: 'test?id=1',
+  url: 'FooterButton?id=1',
   events: {
     // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
     acceptDataFromOpenedPage: function(data) {
@@ -10645,19 +10645,19 @@ wx.navigateTo({
   },
   success: function(res) {
     // 通过eventChannel向被打开页面传送数据
-    res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+    res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'FooterButton' })
   }
 })
 ```
 *
 * ```javascript
-//test.js
+//FooterButton.js
 Page({
   onLoad: function(option){
     console.log(option.query)
     const eventChannel = this.getOpenerEventChannel()
-    eventChannel.emit('acceptDataFromOpenedPage', {data: 'test'});
-    eventChannel.emit('someEvent', {data: 'test'});
+    eventChannel.emit('acceptDataFromOpenedPage', {data: 'FooterButton'});
+    eventChannel.emit('someEvent', {data: 'FooterButton'});
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('acceptDataFromOpenerPage', function(data) {
       console.log(data)
@@ -11656,12 +11656,12 @@ wx.previewImage({
 *
 * ```js
 wx.reLaunch({
-  url: 'test?id=1'
+  url: 'FooterButton?id=1'
 })
 ```
 *
 * ```html
-* // test
+* // FooterButton
 * Page({
 *   onLoad (option) {
 *     console.log(option.query)
@@ -11717,7 +11717,7 @@ wx.readBLECharacteristicValue({
 *
 * ```js
 wx.redirectTo({
-  url: 'test?id=1'
+  url: 'FooterButton?id=1'
 })
 ``` */
         redirectTo(option: RedirectToOption): void
@@ -11993,7 +11993,7 @@ wx.startHCE({
 let socketOpen = false
 const socketMsgQueue = []
 wx.connectSocket({
-  url: 'test.php'
+  url: 'FooterButton.php'
 })
 
 wx.onSocketOpen(function(res) {

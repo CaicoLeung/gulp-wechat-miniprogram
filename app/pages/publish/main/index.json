@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发布",
+  "usingComponents": {
+    "footer-button": "/components/FooterButton/index"
+  }
+}

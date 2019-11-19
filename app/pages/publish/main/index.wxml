@@ -1,0 +1,3 @@
+<view class="publish-main-container">
+  <footer-button>发布</footer-button>
+</view>

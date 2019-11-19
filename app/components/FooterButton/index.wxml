@@ -1,0 +1,5 @@
+<view class="publish-main-container">
+  <view class="publish-main-button">
+      <text><slot>发布</slot></text>
+  </view>
+</view>
