@@ -1,29 +1,48 @@
-interface IActionsheetOption {
-  sizeType: string[]
-  sourceType: string[]
+
+interface IChooseSourceOption {
+  sourceType: Array<'album' | 'camera'>
 }
 
 Page({
   data: {
-    selectedImageList: []
+    selectedImageList: [],
+    selectedVideo: {
+      height: 750,
+      src: ''
+    }
   },
-  selectLocalPhotoHander (actionOption: IActionsheetOption) {
+  selectLocalPhotoHander (actionOption: IChooseSourceOption) {
+    const self = this
     wx.chooseImage({
-      count: 1,
+      count: 9,
       sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
+      sourceType: actionOption.sourceType,
       success (res: WechatMiniprogram.ChooseImageSuccessCallbackResult) {
-        const selectedImageList = this.data.selectedImageList.concat(res.tempFilePaths)
-        this.setData({ selectedImageList })
+        const selectedImageList = self.data.selectedImageList.concat(res.tempFilePaths)
+        self.setData({ selectedImageList })
+      }
+    })
+  },
+  selectLocalViseoHander (chooseVideoOption: IChooseSourceOption) {
+    const self = this
+    wx.chooseVideo({
+      maxDuration: 60,
+      compressed: false,
+      sourceType: chooseVideoOption.sourceType,
+      success (res: WechatMiniprogram.ChooseVideoSuccessCallbackResult) {
+        console.log(res)
+        self.setData({ selectedVideo: {
+          height: 750 / (res.width / res.height),
+          src: res.tempFilePath
+        }})
       }
     })
   },
   showActionSheet () {
-    const actionOption: IActionsheetOption = {
-      sizeType: ['original'],
+    const actionOption: IChooseSourceOption = {
       sourceType: ['camera']
     }
-    const self = this
+    const { selectLocalPhotoHander, selectLocalViseoHander } = this
     wx.showActionSheet({
       itemList: [
         '拍摄照片',
@@ -33,7 +52,27 @@ Page({
       ],
       itemColor: '#333333',
       success (res: WechatMiniprogram.ShowActionSheetSuccessCallbackResult) {
-        self.selectLocalPhotoHander(actionOption)
+        switch (res.tapIndex) {
+        case 0:
+          actionOption.sourceType = ['camera']
+          selectLocalPhotoHander(actionOption)
+          break
+        case 1:
+          actionOption.sourceType = ['camera']
+          selectLocalViseoHander(actionOption)
+          break
+        case 2:
+          actionOption.sourceType = ['album']
+          selectLocalPhotoHander(actionOption)
+          break
+        case 3:
+          actionOption.sourceType = ['album']
+          selectLocalViseoHander(actionOption)
+          break
+        default:
+          actionOption.sourceType = ['camera']
+          selectLocalPhotoHander(actionOption)
+        }
       }
     })
   }
