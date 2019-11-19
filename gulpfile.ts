@@ -28,7 +28,9 @@ const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/
 const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`];
 const tsProject = ts.createProject('tsconfig.json');
 const root = path.join(__dirname, 'app/pages');
-const source = `${appPath}/_template`;
+const componentPath = path.join(__dirname, 'app/components');
+const _templateSource = `${appPath}/_template`;
+const _componentSource = `${appPath}/_component`;
 
 const clean = async () => {
   const deletePaths = await del('dist/**');
@@ -95,20 +97,24 @@ gulp.task('watch', gulp.series('build', () => {
   gulp.watch(wxmlFiles, wxml);
 }));
 
-const optEnum = {
-  p: 'page'
-};
 const argv = yargs.argv;
 let target = 'test';
-let appJson = readAppJson();
+let createPath = 'test';
 
 const create = () => {
-  if (argv.page) target = argv.page;
-  if (appJson.pages) {
-    appJson.pages.push(`pages/${target}/index`);
-    writeAppJson(JSON.stringify(appJson));
+  if (argv.page) {
+    target = argv.page;
+    createPath = _templateSource
+    let appJson = readAppJson();
+    if (appJson.pages) {
+      appJson.pages.push(`pages/${target}/index`);
+      writeAppJson(JSON.stringify(appJson));
+    }
+  } else if (argv.component) {
+    target = argv.component
+    createPath = _componentSource
   }
-  return gulp.src(path.join(source, '*.*'))
+  return gulp.src(path.join(createPath, '*.*'))
     .pipe(rename({
       dirname: target,
       basename: 'index'

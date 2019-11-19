@@ -28,7 +28,11 @@
   ```
   $ gulp create --page [name]
   ```
-5. 编译代码, 生成dist目录, 用微信开发者工具打开dist目录
+5. 创建component, 自动添加在components/{name}目录下
+  ```
+  $ gulp create --component [name]
+  ```
+6. 编译代码, 生成dist目录, 用微信开发者工具打开dist目录
   ```
   $ npm run build
   $ npm run watch
