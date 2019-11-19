@@ -1,29 +1,24 @@
-cover-view {
-  overflow: scroll;
-}
-
 .tab-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 114rpx;
+  height: 100rpx;
   background: white;
   display: flex;
   align-items: flex-end;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -4rpx 6rpx 0 rgba(0,0,0,0.03);
 }
 
 .tab-bar-border {
-  //background-color: rgba(0, 0, 0, 0.33);
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.33);
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 1px;
   transform: scaleY(0.5);
+  box-shadow: 0 -4rpx 6rpx 0 rgba(0,0,0,0.03);
 }
 
 .tab-bar-item {
@@ -34,7 +29,7 @@ cover-view {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  cover-image {
+  image {
     width: 48rpx;
     height: 48rpx;
   }
@@ -45,11 +40,8 @@ cover-view {
 }
 
 .tab-bar-item2 {
-  width: 114rpx;
-  height: 114rpx;
-  z-index: 10;
 
-  cover-image {
+  image {
     width: 88rpx;
     height: 88rpx;
     border-radius: 50%;
