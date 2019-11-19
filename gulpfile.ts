@@ -21,10 +21,10 @@ const yargs        = require('yargs');
 
 const appPath   = 'app/**';
 const distPath  = 'dist';
-const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/_template/*.wxml`];
-const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/_template/*.+(sass|scss)`];
-const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`];
-const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/*.d.ts`];
+const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/_template/*.wxml`, `!${appPath}/_component/*.wxml`];
+const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/_template/*.+(sass|scss)`, `!${appPath}/_component/*.+(sass|scss)`];
+const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`, `!${appPath}/_component/*json`];
+const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/_component/*ts`, `!${appPath}/*.d.ts`];
 const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`];
 const tsProject = ts.createProject('tsconfig.json');
 const root = path.join(__dirname, 'app/pages');
@@ -98,13 +98,15 @@ gulp.task('watch', gulp.series('build', () => {
 }));
 
 const argv = yargs.argv;
-let target = 'test';
-let createPath = 'test';
+let target = '';
+let createPath = '';
+let createTemplate = ''
 
 const create = () => {
   if (argv.page) {
     target = argv.page;
-    createPath = _templateSource
+    createTemplate = _templateSource
+    createPath = root
     let appJson = readAppJson();
     if (appJson.pages) {
       appJson.pages.push(`pages/${target}/index`);
@@ -112,13 +114,17 @@ const create = () => {
     }
   } else if (argv.component) {
     target = argv.component
-    createPath = _componentSource
+    createTemplate = _componentSource
+    createPath = componentPath
   }
-  return gulp.src(path.join(createPath, '*.*'))
+  if (!target || !createPath) {
+    throw Error('参数错误或文件名为空')
+  }
+  return gulp.src(path.join(createTemplate, '*.*'))
     .pipe(rename({
       dirname: target,
       basename: 'index'
     }))
-    .pipe(gulp.dest(path.join(root)));
+    .pipe(gulp.dest(path.join(createPath)));
 };
 gulp.task(create);
