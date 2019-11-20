@@ -1,0 +1,9 @@
+<view class="treasureLogBox">
+      <view class="titleChoiseBox">
+            <view class="txt-box" wx:for="{{titleList}}">
+                  <view class="titleName">
+                      {{item.txtname}}
+                  </view>
+            </view>
+      </view>
+</view>
