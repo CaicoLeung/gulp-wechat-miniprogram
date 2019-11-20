@@ -39,7 +39,8 @@
     "Page": true,
     "Component": true,
     "wx": true,
-    "WechatMiniprogram": true
+    "WechatMiniprogram": true,
+    "getApp": true
   },
   "rules": {
     "curly": "off",
@@ -92,6 +93,7 @@
     "@typescript-eslint/no-this-alias":[2, {
       "allowDestructuring": true,
       "allowedNames": ["self"]
-    }]
+    }],
+    "@typescript-eslint/triple-slash-reference": 0
   }
 }

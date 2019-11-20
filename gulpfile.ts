@@ -89,13 +89,13 @@ gulp.task(images)
 gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxml', 'typescript', 'json', 'sass')))
 
 // watch
-gulp.task('watch', gulp.series('build', () => {
+gulp.task('watch', () => {
   gulp.watch(imgFiles, images)
   gulp.watch(sassFiles, sass)
   gulp.watch(tsFiles, typescript)
   gulp.watch(jsonFiles, json)
   gulp.watch(wxmlFiles, wxml)
-}))
+})
 
 const argv = yargs.argv
 let target: string | unknown

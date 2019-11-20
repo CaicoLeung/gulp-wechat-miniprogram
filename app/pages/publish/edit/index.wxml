@@ -1,0 +1,20 @@
+<view class="publish-edit-container">
+  <navigation-bar background="transparent"
+                  backgroundColorTop="transparent"
+                  iconTheme="white"
+                  back
+                  bind:back="navigationBackHander"
+  ></navigation-bar>
+  <block wx:if="{{selectedImageList.length}}">
+    <swiper class="source-preview">
+      <swiper-item wx:for="{{selectedImageList}}"
+                   wx:key="{{item.path}}"
+                   class="source-preview-item"
+      >
+        <image src="{{item.path}}"
+               style="height: {{750 * item.height / item.width}}rpx;"
+        ></image>
+      </swiper-item>
+    </swiper>
+  </block>
+</view>

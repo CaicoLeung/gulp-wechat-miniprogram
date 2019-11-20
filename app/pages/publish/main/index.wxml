@@ -6,16 +6,25 @@
   >
     <view class="add-img-hander"
           bind:tap="showActionSheet"
+          wx:if="{{selectedImageList.length < maximumImageCount && !selectedVideo}}"
     ></view>
-    <view class="img-preview"
-          wx:for="{{selectedImageList}}"
-          wx:key="{{index}}"
-    >
-      <image src="{{item}}" mode="center"></image>
+    <block wx:if="{{selectedImageList.length}}">
+      <view class="img-preview"
+            wx:for="{{selectedImageList}}"
+            wx:key="{{index}}"
+      >
+        <image src="{{item.path}}" mode="aspectFill"></image>
+      </view>
+    </block>
+    <view class="img-preview" wx:if="{{selectedVideo}}">
+      <cover-image class="play-icon"
+                   src="/assets/img/publish/vedio-play@2x.png"
+      ></cover-image>
+      <video src="{{selectedVideo}}"
+             controls="{{false}}"
+             show-fullscreen-btn="{{false}}"
+      ></video>
     </view>
   </scroll-view>
-  <video src="{{selectedVideo.src}}"
-         style="width: 750rpx; height: {{selectedVideo.height}}rpx;"
-  ></video>
   <footer-button>发布</footer-button>
 </view>

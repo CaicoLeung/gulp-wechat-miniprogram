@@ -41,9 +41,19 @@
       width: 130rpx;
       height: 130rpx;
       border-radius: 6rpx;
-      background: #F8F8F8;
+      background: #000000;
       margin-left: 17rpx;
       overflow: hidden;
+      position: relative;
+      .play-icon {
+        position: absolute;
+        width: 36rpx;
+        height: 36rpx;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+      }
     }
   }
 }
