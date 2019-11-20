@@ -1,9 +1,11 @@
 {
   "pages": [
-    "pages/home/treasureLog/index",
+    "pages/home/treasureAtlas/index",
     "pages/home/index",
     "pages/my/index",
     "pages/publish/index",
+    "pages/home/treasureLog/index",
+    "pages/home/atlas/index",
     "pages/publish/main/index"
   ],
   "window": {

@@ -1,0 +1,13 @@
+<view class="atlasBox">
+  <view class="photonBox"
+        wx:for="{{imgList}}"
+        wx:key="idx"
+        data-index="{{index}}"
+  >
+    <image class="img-box"
+           src="{{item.imgs}}"
+           data-url="{{item.imgs}}"
+           bind:tap="previewImage"
+    ></image>
+  </view>
+</view>
