@@ -1,9 +1,11 @@
 .publish-main-container {
   .selected-img-pre {
-    padding: 41rpx 30rpx;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    padding: 41rpx 30rpx 20rpx;
+    box-sizing: border-box;
+    white-space: nowrap;
     .add-img-hander {
+      display: inline-block;
       width: 130rpx;
       height: 130rpx;
       border-radius: 6rpx;
@@ -33,6 +35,15 @@
         transform: translate(-50%, -50%);
         z-index: 5;
       }
+    }
+    .img-preview {
+      display: inline-block;
+      width: 130rpx;
+      height: 130rpx;
+      border-radius: 6rpx;
+      background: #F8F8F8;
+      margin-left: 17rpx;
+      overflow: hidden;
     }
   }
 }

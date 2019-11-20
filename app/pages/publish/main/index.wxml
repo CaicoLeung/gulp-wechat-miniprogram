@@ -1,12 +1,21 @@
 <view class="publish-main-container">
-  <view class="selected-img-pre">
-    <view class="add-img-hander"></view>
+  <scroll-view class="selected-img-pre"
+               style="width: 100%;"
+               scroll-x
+               scroll-anchoring
+  >
+    <view class="add-img-hander"
+          bind:tap="showActionSheet"
+    ></view>
     <view class="img-preview"
           wx:for="{{selectedImageList}}"
           wx:key="{{index}}"
     >
-      <image src="{{item}}"></image>
+      <image src="{{item}}" mode="center"></image>
     </view>
-  </view>
+  </scroll-view>
+  <video src="{{selectedVideo.src}}"
+         style="width: 750rpx; height: {{selectedVideo.height}}rpx;"
+  ></video>
   <footer-button>发布</footer-button>
 </view>
