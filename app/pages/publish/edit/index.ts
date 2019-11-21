@@ -1,6 +1,7 @@
 Page({
   data: {
-    selectedImageList: []
+    selectedImageList: [],
+    swiperCurrentIndex: 0
   },
   onReady () {
     const eventChannel = this.getOpenerEventChannel()
@@ -19,5 +20,13 @@ Page({
         eventChannel.emit('getSelectedImageList', self.data.selectedImageList)
       }
     })
+  },
+  swiperChangeHander ({
+    detail: { current = 0 }
+  }) {
+    console.log(current)
+    this.setData({ swiperCurrentIndex: current })
   }
 })
+// selected == index ? 'color:#333333;font-weight:600;' : ''
+// selected === index && 'color:#333333;font-weight:600;'

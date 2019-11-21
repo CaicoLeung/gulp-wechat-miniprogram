@@ -3,17 +3,31 @@
                   backgroundColorTop="transparent"
                   iconTheme="white"
                   back
+                  home
                   bind:back="navigationBackHander"
-  ></navigation-bar>
+  >
+    <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedImageList.length}}</text>
+  </navigation-bar>
   <block wx:if="{{selectedImageList.length}}">
-    <swiper class="source-preview">
+    <swiper class="source-preview"
+            current="{{swiperCurrentIndex}}"
+            bind:change="swiperChangeHander"
+    >
       <swiper-item wx:for="{{selectedImageList}}"
                    wx:key="{{item.path}}"
                    class="source-preview-item"
       >
-        <image src="{{item.path}}"
+        <image class="source-preview-img"
+               src="{{item.path}}"
                style="height: {{750 * item.height / item.width}}rpx;"
         ></image>
+        <view class="edit-buttons">
+          <view class="tag-select-hander">
+            <image class="tag-icon" src="/assets/img/publish/tag-white@2x.png" mode="widthFix"></image>
+            <text>标签</text>
+          </view>
+          <view class="confirm-hander"><text>完成</text></view>
+        </view>
       </swiper-item>
     </swiper>
   </block>

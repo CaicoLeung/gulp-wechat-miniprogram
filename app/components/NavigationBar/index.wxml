@@ -24,7 +24,7 @@
         <slot name="left"></slot>
       </block>
     </view>
-    <view class='lxy-nav-bar__center'>
+    <view class='lxy-nav-bar__center {{iconTheme}}'>
       <block wx:if="{{title}}">
         <text class='lxy-nav-bar__center-title'>{{title}}</text>
       </block>

@@ -8,11 +8,49 @@ page {
     height: 100vh;
     .source-preview-item {
       position: relative;
-      image {
+      image.source-preview-img {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         z-index: 10;
+      }
+      .edit-buttons {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 40rpx;
+        z-index: 20;
+        padding: 0 32rpx;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .tag-select-hander {
+          display: flex;
+          align-items: center;
+          image.tag-icon {
+            width: 40rpx;
+            margin-right: 16rpx;
+          }
+          text {
+            font-size: 30rpx;
+            font-weight: 600;
+            color: #FFFFFF;
+          }
+        }
+        .confirm-hander {
+          width: 168rpx;
+          height: 58rpx;
+          border-radius: 34rpx;
+          display: table;
+          text-align: center;
+          background-image: linear-gradient(to right, #FE6495, #F44A48);
+          text {
+            color: #FFFFFF;
+            font-size: 31rpx;
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
       }
     }
   }
