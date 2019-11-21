@@ -16,6 +16,7 @@
             bind:tap="gotoEditPage"
       >
         <image src="{{item.path}}" mode="aspectFill"></image>
+        <view class="tag-icon" wx:if="{{item.tag}}"></view>
       </view>
     </block>
     <view class="img-preview" wx:if="{{selectedVideo}}">
@@ -28,5 +29,15 @@
       ></video>
     </view>
   </scroll-view>
+  <view class="input-title">
+    <input type="text"
+           class="input"
+           placeholder="填写标题会有更多赞哦~"
+           placeholder-class="input-title-placeholder"
+           maxlength="{{maxTitleLength}}"
+           bind:input="titleInputHander"
+    />
+    <view class="word-count">{{maxTitleLength - title.length}}</view>
+  </view>
   <footer-button>发布</footer-button>
 </view>

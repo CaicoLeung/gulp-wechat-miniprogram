@@ -5,15 +5,14 @@ Page({
     tagList: ['翡翠', '玛瑙', '宝石', '么么哒'],
     showConfirmActionSheet: false
   },
-  onReady () {
+  onLoad () {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('getSelectedImageList', (data: {
       selectedImageList: ISelectedImageList
       swiperCurrentIndex: number
     }) => {
-      const selectedImageList = data.selectedImageList.map(i => ({ ...i, showActionSheet: false, tag: '' }))
       this.setData({
-        selectedImageList,
+        selectedImageList: data.selectedImageList,
         swiperCurrentIndex: data.swiperCurrentIndex
       })
       console.log('data: ', data)

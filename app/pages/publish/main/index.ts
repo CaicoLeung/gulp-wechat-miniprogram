@@ -10,7 +10,9 @@ Page({
       '拍摄视频',
       '从手机相册选择照片',
       '从手机相册选择视频'
-    ]
+    ],
+    maxTitleLength: 20,
+    title: ''
   },
   selectLocalPhotoHander (actionOption: IChooseSourceOption) {
     this.setData({ selectedVideo: '' })
@@ -21,13 +23,8 @@ Page({
       sourceType: actionOption.sourceType,
       async success (res: WechatMiniprogram.ChooseImageSuccessCallbackResult) {
         let count = 0
-        let selectedImageList: ISelectedImageItem[] = self.data.selectedImageList.map((i: ISelectedImageItem) => {
-          return {
-            ...i,
-            showActionSheet: false,
-            tag: ''
-          }
-        })
+        const swiperCurrentIndex = self.data.selectedImageList.length
+        let selectedImageList: ISelectedImageItem[] = [].concat(self.data.selectedImageList)
 
         async function Iterator () {
           if (count < res.tempFilePaths.length) {
@@ -38,7 +35,7 @@ Page({
           }
         }
         await Iterator()
-        self.preEditHander(selectedImageList)
+        self.preEditHander(selectedImageList, swiperCurrentIndex)
       }
     })
   },
@@ -110,5 +107,11 @@ Page({
   }) {
     const { swipercurrentindex } = dataset
     this.preEditHander(this.data.selectedImageList, swipercurrentindex)
+  },
+  titleInputHander ({
+    detail: { value = '' }
+  }) {
+    console.log(value)
+    this.setData({ title: value })
   }
 })

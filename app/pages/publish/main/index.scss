@@ -54,6 +54,39 @@
         transform: translate(-50%, -50%);
         z-index: 5;
       }
+      .tag-icon {
+        width: 22rpx;
+        height: 22rpx;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAOVBMVEVHcEz///////////////////////////////////////////////////////////////////////99PJZNAAAAEnRSTlMAjQr2ASGhFM+8kGXkxyNNdzAmIDCjAAABK0lEQVQ4y43V27LDIAgFUBtpLEdTE/7/Y4vpyTQCXnhs1+xBkdY5ozImqsqn9WlBB8tKRvlo4fAiu2LDYn5XdUTuyz9N+wAHID5nvZrW6i4SpVnrDu5j1ro3fzVrJe5agfu2xgNbYWEhbt5vEUxcWwj4nTAGA8tcvN4DgsKyX56W30PY/e31XFidbSPay+vYiTaB9T1wYjhbv434i407+8dOY9T3e7bBpdrIxiyaB8T7/bSvDnJ5z7wBWe+WGgpwa1gOc6gFBzXuPyqhyVxbWcXyCvKPRFpm7Gs5d4twmbBn+4+h/lkH60DfLB+9r+92lC1sN1vaXrZhm9mWbWU3rJndslZ2x6rsnpW6bysNI3vpFI+8DW3ZkN9/4MCe/HGt6uIm6liTT5gd6K8+1rMiXFjaAN4AAAAASUVORK5CYII=");
+        background-size: 100%;
+        position: absolute;
+        left: 10rpx;
+        bottom: 10rpx;
+        z-index: 5;
+      }
+    }
+  }
+  .input-title {
+    margin: 0 32rpx;
+    height: 90rpx;
+    border-bottom: 1rpx solid #DCDCDC;
+    display: flex;
+    align-items: center;
+    .input {
+      width: 100%;
+      font-size: 30rpx;
+      color: #333333;
+      font-weight: 500rpx;
+    }
+    .input-title-placeholder {
+      color: #999999;
+      font-size: 30rpx;
+      font-weight: normal;
+    }
+    .word-count {
+      font-size: 24rpx;
+      color: #999999;
+      margin-left: 60rpx;
     }
   }
 }
