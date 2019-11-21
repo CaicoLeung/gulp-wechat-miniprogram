@@ -1,14 +1,9 @@
-
-type ISelectedImageList = Array<(WechatMiniprogram.GetImageInfoSuccessCallbackResult | null) & {
-  showActionSheet: boolean
-  tag: string
-}>
-
 Page({
   data: {
     selectedImageList: [],
     swiperCurrentIndex: 0,
-    tagList: ['翡翠', '玛瑙', '宝石', '么么哒']
+    tagList: ['翡翠', '玛瑙', '宝石', '么么哒'],
+    showConfirmActionSheet: false
   },
   onReady () {
     const eventChannel = this.getOpenerEventChannel()
@@ -21,6 +16,9 @@ Page({
     })
   },
   navigationBackHander () {
+    wx.navigateBack()
+  },
+  complateEditHander () {
     const eventChannel = this.getOpenerEventChannel()
     const self = this
     wx.navigateBack({
@@ -58,5 +56,19 @@ Page({
     const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
     selectedImageList[this.data.swiperCurrentIndex].tag = ''
     this.setData({ selectedImageList })
-  }
+  },
+  deleteCurrentSourceHander () {
+    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
+    selectedImageList.splice(this.data.swiperCurrentIndex, 1)
+    if (this.data.swiperCurrentIndex === selectedImageList.length) {
+      this.setData({ swiperCurrentIndex: this.data.swiperCurrentIndex - 1 })
+    }
+    this.setData({ selectedImageList }, this.hideConfirmActionSheetHander)
+  },
+  showConfirmActionSheetHander () {
+    this.setData({ showConfirmActionSheet: true })
+  },
+  hideConfirmActionSheetHander () {
+    this.setData({ showConfirmActionSheet: false })
+  },
 })

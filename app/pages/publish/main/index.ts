@@ -1,9 +1,4 @@
-
 import { WXGetImageInfoAsync } from '../../../utils/util'
-
-interface IChooseSourceOption {
-  sourceType: Array<'album' | 'camera'>
-}
 
 Page({
   data: {
@@ -26,19 +21,24 @@ Page({
       sourceType: actionOption.sourceType,
       async success (res: WechatMiniprogram.ChooseImageSuccessCallbackResult) {
         let count = 0
-        let selectedImageList: Array<WechatMiniprogram.GetImageInfoSuccessCallbackResult | null> = self.data.selectedImageList
+        let selectedImageList: ISelectedImageItem[] = self.data.selectedImageList.map((i: ISelectedImageItem) => {
+          return {
+            ...i,
+            showActionSheet: false,
+            tag: ''
+          }
+        })
 
         async function Iterator () {
           if (count < res.tempFilePaths.length) {
-            const result = await WXGetImageInfoAsync(res.tempFilePaths[count])
+            const result: ISelectedImageItem = await WXGetImageInfoAsync(res.tempFilePaths[count])
             count++
             selectedImageList = selectedImageList.concat([result])
             await Iterator()
           }
         }
         await Iterator()
-        self.setData({ selectedImageList })
-        self.preEditHander()
+        self.preEditHander(selectedImageList)
       }
     })
   },
@@ -86,18 +86,17 @@ Page({
       }
     })
   },
-  preEditHander () {
+  preEditHander (selectedImageList: ISelectedImageItem[]) {
     const self = this
     wx.navigateTo({
       url: '/pages/publish/edit/index',
       events: {
         getSelectedImageList (selectedImageList: Array<WechatMiniprogram.GetImageInfoSuccessCallbackResult | null>) {
-          console.log('selectedImageList: ', selectedImageList)
           self.setData({ selectedImageList })
         }
       },
       success (res) {
-        res.eventChannel.emit('getSelectedImageList', { selectedImageList: self.data.selectedImageList })
+        res.eventChannel.emit('getSelectedImageList', { selectedImageList })
       }
     })
   }

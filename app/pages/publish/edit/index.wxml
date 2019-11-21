@@ -5,6 +5,7 @@
                   back
                   delete
                   bind:back="navigationBackHander"
+                  bind:delete="showConfirmActionSheetHander"
   >
     <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedImageList.length}}</text>
   </navigation-bar>
@@ -17,6 +18,10 @@
                    wx:key="{{item.path}}"
                    class="source-preview-item"
       >
+        <!-- 上遮罩 -->
+        <view class="top-mark"></view>
+        <!-- 下遮罩 -->
+        <view class="bottom-mark"></view>
         <image class="source-preview-img"
                src="{{item.path}}"
                style="height: {{750 * item.height / item.width}}rpx;"
@@ -35,7 +40,9 @@
             <image class="tag-icon" src="/assets/img/publish/tag-white@2x.png" mode="widthFix"></image>
             <text>标签</text>
           </view>
-          <view class="confirm-hander"><text>完成</text></view>
+          <view class="confirm-hander" bind:tap="complateEditHander">
+            <text>完成</text>
+          </view>
         </view>
         <vant-popup show="{{item.showActionSheet}}"
                     position="bottom"
@@ -62,4 +69,21 @@
       </swiper-item>
     </swiper>
   </block>
+  <!--  删除确认弹窗  -->
+  <vant-popup show="{{showConfirmActionSheet}}"
+              position="bottom"
+              round
+              bind:close="hideActionSheetHander">
+    <view class="confirm-actionSheet">
+      <view class="actionSheet-head">
+        <text>确定要删除吗？</text>
+      </view>
+      <view class="actionSheet-confirm" bind:tap="deleteCurrentSourceHander">
+        <text>删除</text>
+      </view>
+      <view class="actionSheet-cancel" bind:tap="hideConfirmActionSheetHander">
+        <text>取消</text>
+      </view>
+    </view>
+  </vant-popup>
 </view>
