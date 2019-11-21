@@ -12,6 +12,8 @@
       <view class="img-preview"
             wx:for="{{selectedImageList}}"
             wx:key="{{index}}"
+            data-swipercurrentindex="{{index}}"
+            bind:tap="gotoEditPage"
       >
         <image src="{{item.path}}" mode="aspectFill"></image>
       </view>

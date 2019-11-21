@@ -86,7 +86,7 @@ Page({
       }
     })
   },
-  preEditHander (selectedImageList: ISelectedImageItem[]) {
+  preEditHander (selectedImageList: ISelectedImageItem[], swiperCurrentIndex = 0) {
     const self = this
     wx.navigateTo({
       url: '/pages/publish/edit/index',
@@ -96,8 +96,19 @@ Page({
         }
       },
       success (res) {
-        res.eventChannel.emit('getSelectedImageList', { selectedImageList })
+        res.eventChannel.emit('getSelectedImageList', {
+          selectedImageList,
+          swiperCurrentIndex
+        })
       }
     })
+  },
+  gotoEditPage ({
+    currentTarget: {
+      dataset = { swipercurrentindex: 0 }
+    }
+  }) {
+    const { swipercurrentindex } = dataset
+    this.preEditHander(this.data.selectedImageList, swipercurrentindex)
   }
 })

@@ -8,11 +8,15 @@ Page({
   onReady () {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('getSelectedImageList', (data: {
-      selectedImageList: Array<(WechatMiniprogram.GetImageInfoSuccessCallbackResult | null) & {showActionSheet: boolean}>
+      selectedImageList: ISelectedImageList
+      swiperCurrentIndex: number
     }) => {
       const selectedImageList = data.selectedImageList.map(i => ({ ...i, showActionSheet: false, tag: '' }))
-      this.setData({ selectedImageList })
-      console.log('selectedImageList: ', this.data.selectedImageList)
+      this.setData({
+        selectedImageList,
+        swiperCurrentIndex: data.swiperCurrentIndex
+      })
+      console.log('data: ', data)
     })
   },
   navigationBackHander () {
