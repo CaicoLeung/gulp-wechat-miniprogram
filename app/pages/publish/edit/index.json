@@ -8,6 +8,7 @@
   "disableScroll": true,
   "navigationStyle": "custom",
   "usingComponents": {
-    "navigation-bar": "/components/NavigationBar/index"
+    "navigation-bar": "/components/NavigationBar/index",
+    "vant-popup": "/vant/popup/index"
   }
 }

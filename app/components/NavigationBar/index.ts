@@ -45,6 +45,10 @@ export default Component({
       type: Boolean,
       value: false
     },
+    delete: {
+      type: Boolean,
+      value: false
+    },
     iconTheme: {
       type: String,
       value: 'black'
@@ -117,6 +121,9 @@ export default Component({
     },
     search () {
       this.triggerEvent('search', {})
+    },
+    delete () {
+      this.triggerEvent('delete', {})
     }
   }
 })

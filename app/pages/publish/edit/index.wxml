@@ -3,7 +3,7 @@
                   backgroundColorTop="transparent"
                   iconTheme="white"
                   back
-                  home
+                  delete
                   bind:back="navigationBackHander"
   >
     <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedImageList.length}}</text>
@@ -21,13 +21,44 @@
                src="{{item.path}}"
                style="height: {{750 * item.height / item.width}}rpx;"
         ></image>
+        <view class="selected-tag" wx:if="{{item.tag}}">
+          <image class="tag-small-icon" src="/assets/img/publish/tag-little@2x.png" mode="widthFix"></image>
+          <text>{{item.tag}}</text>
+          <image class="delete-tag-hander"
+                 src="/assets/img/publish/close@2x.png"
+                 mode="widthFix"
+                 bind:tap="deleteTagHander"
+          ></image>
+        </view>
         <view class="edit-buttons">
-          <view class="tag-select-hander">
+          <view class="tag-select-hander" bind:tap="showActionSheetHander">
             <image class="tag-icon" src="/assets/img/publish/tag-white@2x.png" mode="widthFix"></image>
             <text>标签</text>
           </view>
           <view class="confirm-hander"><text>完成</text></view>
         </view>
+        <vant-popup show="{{item.showActionSheet}}"
+                    position="bottom"
+                    round
+                    custom-style="opacity: 0.85;"
+                    bind:close="hideActionSheetHander"
+        >
+          <view class="actionSheet">
+            <view class="actionSheet-head">
+              <text>选择标签</text>
+            </view>
+            <view class="actionSheet-list">
+              <view class="actionSheet-item"
+                    wx:for="{{tagList}}"
+                    wx:key="{{index}}"
+                    data-tag="{{item}}"
+                    bind:tap="selectTagHander"
+              >
+                <text>{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </vant-popup>
       </swiper-item>
     </swiper>
   </block>
