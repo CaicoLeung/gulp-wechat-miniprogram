@@ -7,12 +7,12 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "fix": "eslint --fix --ext .js,.ts app/",
-    "precommit": "lint-staged",
     "test": "echo \"Error: 测试报错\" && exit 1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo \"Error: 测试报错\" && exit 1"
+      "pre-commit": "lint-staged",
+      "post-commit": "echo \"提交完毕\""
     }
   },
   "lint-staged": {
