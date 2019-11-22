@@ -1,0 +1,42 @@
+.create-product-box{
+  .picture-cover{
+    .photo-box{
+      width:183rpx;
+      height:183rpx;
+      text-align: center;
+      background:#F8F8F8;
+      margin:86rpx 284rpx 0;
+      image{
+        width:69rpx;
+        height:68rpx;
+        margin-top:31rpx;
+      }
+      view{
+        color:#999999;
+        font-size:26rpx;
+      }
+    }
+    .input-box{
+      display:flex;
+      width:654rpx;
+      height:64rpx;
+      line-height: 64rpx;
+      background:#F8F8F8;
+      padding: 0 16rpx;
+      justify-content: space-between;
+      margin:110rpx 32rpx 47rpx;
+      input{
+        height:64rpx;
+        line-height: 64rpx;
+        font-size:28rpx;
+      }
+      view{
+        font-size:24rpx;
+        color:#999999;
+      }
+    }
+    .btn-box{
+
+    }
+  }
+}

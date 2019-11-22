@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/index",
+    "pages/my/createProductPost/index",
     "pages/my/myTreasure/index",
     "pages/my/index",
     "pages/home/treasureLog/index",
