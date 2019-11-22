@@ -26,7 +26,7 @@ export const WXGetImageInfoAsync = (src: string): Promise<ISelectedSourceItem> =
         })
       },
       fail (error) {
-        reject (error)
+        reject(error)
       }
     })
   })

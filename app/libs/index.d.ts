@@ -3,7 +3,7 @@
 
 interface IAppOption {
   globalData: {
-    userInfo?: WechatMiniprogram.UserInfo
+    userInfo?: WechatMiniprogram.UserInfo | {}
     globalSystemInfo?: {
       navBarHeight: number
       capsulePosition: WechatMiniprogram.Rect

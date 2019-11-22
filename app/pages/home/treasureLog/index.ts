@@ -2,10 +2,7 @@ Page({
   data: {
 
   },
-  onLoad() {
-
-  },
-  onUnload() {
+  test () {
 
   }
-});
+})

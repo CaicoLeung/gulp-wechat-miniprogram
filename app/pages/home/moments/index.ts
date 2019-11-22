@@ -3,7 +3,7 @@ Page({
 
   },
   onLoad () {
-    console.log('onLoad');;
+    console.log('onLoad')
   },
   navigationBackHander () {
     wx.navigateBack()

@@ -67,7 +67,7 @@ export default Component({
     isIOS: false
   },
   attached () {
-    this.setStyle() //设置样式
+    this.setStyle() // 设置样式
   },
   methods: {
     setStyle () {
@@ -80,8 +80,8 @@ export default Component({
         windowWidth
       } = app.globalData.globalSystemInfo
       const { back, home, title } = this.data
-      const rightDistance = windowWidth - capsulePosition.right //胶囊按钮右侧到屏幕右侧的边距
-      const leftWidth = windowWidth - capsulePosition.left //胶囊按钮左侧到屏幕右侧的边距
+      const rightDistance = windowWidth - capsulePosition.right // 胶囊按钮右侧到屏幕右侧的边距
+      const leftWidth = windowWidth - capsulePosition.left // 胶囊按钮左侧到屏幕右侧的边距
 
       const navigationbarinnerStyle = [
         `color: ${this.data.color}`,

@@ -1,1 +1,1 @@
-export declare const touch: string;
+export declare const touch: string

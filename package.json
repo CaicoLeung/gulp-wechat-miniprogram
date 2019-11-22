@@ -6,12 +6,20 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "lint": "eslint app --ext .ts --cache --fix",
-    "pre-lint": "node lint.js"
+    "fix": "eslint --fix --ext .js --ext .ts app/",
+    "test": "echo 'hello'"
   },
-  "pre-commit": [
-    "pre-lint"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "watch"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{js,ts}": [
+      "npm run fix",
+      "git add"
+    ]
+  },
   "author": "caico",
   "license": "ISC",
   "devDependencies": {
@@ -39,7 +47,9 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-tslint": "^8.1.4",
     "gulp-uglify": "^3.0.2",
+    "husky": "^3.1.0",
     "jshint": "^2.10.3",
+    "lint-staged": "^9.4.3",
     "node-sass": "^4.13.0",
     "pre-commit": "^1.2.2"
   },
