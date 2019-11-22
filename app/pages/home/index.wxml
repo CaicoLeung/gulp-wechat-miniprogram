@@ -1,21 +1,19 @@
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}"
-            open-type="getUserInfo"
-            bind:getuserinfo="getUserInfo"
-    >获取头像昵称</button>
-    <block wx:else>
-      <image class="userinfo-avatar" 
-            src="{{userInfo.avatarUrl}}" 
-            mode="aspectFill" 
-            lazy-load="false"
-            bind:tap="bindViewTap"
-      >
-      </image>
-      <text class="userinfo-nickname">Hello {{userInfo.nickName}}!</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <button class="user-motto">{{motto}}</button>
-  </view>
+<view class="HomePageBox">
+    <view class="recommendTreasureBox">
+        <view class="Txt">推荐宝物</view>
+        <view class="treasureListBox">
+            <view class="GoodsChoise"
+                  wx:for="{{treasureList}}"
+                  wx:key="index"
+                  bind:tap="jumpGoods"
+            >
+                <image src="https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png"></image>
+                <view>{{item.goodsname}}</view>
+            </view>
+        </view>
+    </view>
+
+    <block wx:key="index">
+			<treasureLogList></treasureLogList>
+		</block>
 </view>

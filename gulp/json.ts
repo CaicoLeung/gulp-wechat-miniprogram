@@ -1,12 +1,13 @@
 import * as path from 'path'
-import { readFile, writeFile } from 'jsonfile'
+import { readFile, writeFile, Path } from 'jsonfile'
 
 const appPath = 'app'
-const appJson = path.join(__dirname, `../${appPath}/app.json`)
+const appJson: Path = path.join(__dirname, `../${appPath}/app.json`)
 
-export const readAppJson = async (): Promise<any> => {
+export const readAppJson = async () => {
   console.log('appJson: ', appJson)
-  return await readFile(appJson)
+  const result = await readFile(appJson)
+  return result
   // return JSON.parse(readFileSync(appJson).toString())
 }
 
