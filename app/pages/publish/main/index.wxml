@@ -6,28 +6,30 @@
   >
     <view class="add-img-hander"
           bind:tap="showActionSheet"
-          wx:if="{{selectedImageList.length < maximumImageCount && !selectedVideo}}"
     ></view>
-    <block wx:if="{{selectedImageList.length}}">
+    <block wx:if="{{selectedSourceList.length}}">
       <view class="img-preview"
-            wx:for="{{selectedImageList}}"
+            wx:for="{{selectedSourceList}}"
             wx:key="{{index}}"
             data-swipercurrentindex="{{index}}"
             bind:tap="gotoEditPage"
       >
-        <image src="{{item.path}}" mode="aspectFill"></image>
-        <view class="tag-icon" wx:if="{{item.tag}}"></view>
+        <block wx:if="{{item.type === 'image'}}">
+          <image src="{{item.path}}" mode="aspectFill"></image>
+          <view class="tag-icon" wx:if="{{item.tag}}"></view>
+        </block>
+        <block wx:elif="{{item.type === 'video'}}">
+          <cover-image class="play-icon"
+                       src="/assets/img/publish/vedio-play@2x.png"
+          ></cover-image>
+          <video src="{{item.tempFilePath}}"
+                 controls="{{false}}"
+                 show-fullscreen-btn="{{false}}"
+          ></video>
+          <view class="tag-icon" wx:if="{{item.tag}}"></view>
+        </block>
       </view>
     </block>
-    <view class="img-preview" wx:if="{{selectedVideo}}">
-      <cover-image class="play-icon"
-                   src="/assets/img/publish/vedio-play@2x.png"
-      ></cover-image>
-      <video src="{{selectedVideo}}"
-             controls="{{false}}"
-             show-fullscreen-btn="{{false}}"
-      ></video>
-    </view>
   </scroll-view>
   <view class="input-title">
     <input type="text"
@@ -35,9 +37,31 @@
            placeholder="填写标题会有更多赞哦~"
            placeholder-class="input-title-placeholder"
            maxlength="{{maxTitleLength}}"
+           value="{{value}}"
            bind:input="titleInputHander"
     />
     <view class="word-count">{{maxTitleLength - title.length}}</view>
+  </view>
+  <view class="text-area-input">
+    <textarea class="textarea"
+              placeholder="添加正文"
+              placeholder-class="input-text-placeholder"
+              maxlength="{{maxTextLength}}"
+              value="{{text}}"
+              show-confirm-bar="{{false}}"
+              bind:input="textInputHander"
+    ></textarea>
+    <view class="word-count">{{maxTextLength - text.length}}</view>
+  </view>
+  <view class="linked">
+    <view class="linked-main">
+      <view class="icon"></view>
+      <view class="title">关联我的宝物</view>
+    </view>
+    <view class="linked-secondary">
+      <view class="text">去创建我的宝物</view>
+      <view class="icon"></view>
+    </view>
   </view>
   <footer-button>发布</footer-button>
 </view>

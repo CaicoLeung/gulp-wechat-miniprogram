@@ -7,14 +7,14 @@
                   bind:back="navigationBackHander"
                   bind:delete="showConfirmActionSheetHander"
   >
-    <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedImageList.length}}</text>
+    <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedSourceList.length}}</text>
   </navigation-bar>
-  <block wx:if="{{selectedImageList.length}}">
+  <block wx:if="{{selectedSourceList.length}}">
     <swiper class="source-preview"
             current="{{swiperCurrentIndex}}"
             bind:change="swiperChangeHander"
     >
-      <swiper-item wx:for="{{selectedImageList}}"
+      <swiper-item wx:for="{{selectedSourceList}}"
                    wx:key="{{item.path}}"
                    class="source-preview-item"
       >
@@ -22,10 +22,20 @@
         <view class="top-mark"></view>
         <!-- 下遮罩 -->
         <view class="bottom-mark"></view>
-        <image class="source-preview-img"
-               src="{{item.path}}"
-               style="height: {{750 * item.height / item.width}}rpx;"
-        ></image>
+        <block wx:if="{{item.type === 'image'}}">
+          <image class="source-preview-entity"
+                 src="{{item.path}}"
+                 style="height: {{750 * item.height / item.width}}rpx;"
+          ></image>
+        </block>
+        <block wx:elif="{{item.type === 'video'}}">
+          <video class="source-preview-entity"
+                 src="{{item.tempFilePath}}"
+                 show-fullscreen-btn="{{false}}"
+                 play-btn-position="center"
+                 style="height: {{750 * item.height / item.width}}rpx;"
+          ></video>
+        </block>
         <view class="selected-tag" wx:if="{{item.tag}}">
           <image class="tag-small-icon" src="/assets/img/publish/tag-little@2x.png" mode="widthFix"></image>
           <text>{{item.tag}}</text>

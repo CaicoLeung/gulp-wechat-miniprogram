@@ -13,15 +13,16 @@ export const formatTime = (date: Date): string => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-export const WXGetImageInfoAsync = (src: string): Promise<ISelectedImageItem> => {
-  return new Promise<ISelectedImageItem>((resolve, reject) => {
+export const WXGetImageInfoAsync = (src: string): Promise<ISelectedSourceItem> => {
+  return new Promise<ISelectedSourceItem>((resolve, reject) => {
     wx.getImageInfo({
       src,
       success (res: WechatMiniprogram.GetImageInfoSuccessCallbackResult) {
         resolve({
           ...res,
           showActionSheet: false,
-          tag: ''
+          tag: '',
+          type: 'image'
         })
       },
       fail (error) {

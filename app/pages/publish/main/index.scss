@@ -89,4 +89,69 @@
       margin-left: 60rpx;
     }
   }
+  .text-area-input {
+    padding: 0 32rpx;
+    .textarea {
+      width: 100%;
+      padding: 26rpx 0;
+      height: 254rpx;
+      color: #333333;
+      font-size: 30rpx;
+      font-weight: normal;
+    }
+    .input-text-placeholder {
+      color: #999999;
+      font-size: 30rpx;
+      font-weight: normal;
+    }
+    .word-count {
+      width: 100%;
+      height: 86rpx;
+      line-height: 86rpx;
+      text-align: right;
+      color: #999999;
+      font-size: 24rpx;
+      border-bottom: 1rpx solid #DCDCDC;
+    }
+  }
+  .linked {
+    padding: 0 32rpx;
+    height: 98rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .linked-main, .linked-secondary {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      line-height: normal;
+    }
+    .linked-main {
+      .icon {
+        width: 32rpx;
+        height: 28rpx;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAA4BAMAAAC/NuNBAAAALVBMVEVHcEw1NTU9PT0zMzMzMzMzMzM1NTUzMzM2NjYzMzM0NDQ0NDQzMzM0NDQzMzMO9iQzAAAADnRSTlMASwzktM01iyGtpPhyWkDNc6YAAAGQSURBVDjL7ZQxS8NQEMevAWMUBR2kmwSKYB1ECiouRdDJyepeIg4uUhTBsQRnEdFdpHQWwb04iZP4CQoa2liD9xm860tI2r57H0D8Dwm5+72X9/7v3gGQjvZbOKJo9RxizaEmTwRWVL6Iom4471RloOMTsIAG7RFwZwJ6ADl6Ba8ujMi6LFNqBsbo2QCtlii1CzXEbxD0gNiFOmJJAgqIIdAmnyVgijYKtBI/E1u8yHw4iE9ALqdbsM8Q1710I+Q30ErTEX1PeumMnMwCh8qdNQmw40ONPAEoJAaXBKDOrrO/oR5w6A+h7xAW+VqAbMF3gGlMrYuBbaWt+FToBDYh1+RQDKT6YGAecQXektAg8MnAMuIjtPTAFwNXNIOFeuCHgTaXSVUPBHRuFjlxn7iugFmlvLoIxX4lWgccGnKShgan+bKaSGd1e2ApGmAiAa4FwIqX3nGlgplUQEOsKGoEpArIABw3d17ABAzpH/iDgCvl+X5xrZsUmJs9t/uaGejCuBk4Ua1LFLcz+1bOb3jwC85OA4eBCBd1AAAAAElFTkSuQmCC");
+        background-size: 100%;
+        margin-right: 16rpx;
+      }
+      .title {
+        font-size: 30rpx;
+        color: #333333;
+        font-weight: 600;
+      }
+    }
+    .linked-secondary {
+      .text {
+        color: #888888;
+        font-size: 28rpx;
+      }
+      .icon {
+        width: 16rpx;
+        height: 27rpx;
+        margin-left: 24rpx;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAA2BAMAAABU24ZBAAAAGFBMVEVHcExISEg0NDQ0NDRAQEA0NDQzMzMzMzPM5HKxAAAAB3RSTlMAB7aZD8vnCpK3GQAAAFhJREFUKM9jYMAAZskCKHzm8nJFFAG28vIiATQBVCVALahKGNXRlQiNKqGeknSgiAFa+Jc6IAmYAwVCRhVQQQEbmgKQAIoCkBYUBQws5sUOqFmMUYABLwAATLJddgE151EAAAAASUVORK5CYII=");
+        background-size: 100%;
+      }
+    }
+  }
 }

@@ -12,7 +12,7 @@ page {
     .source-preview-item {
       position: relative;
 
-      image.source-preview-img {
+      .source-preview-entity {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);

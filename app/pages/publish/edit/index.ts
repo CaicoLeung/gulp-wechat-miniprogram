@@ -1,18 +1,18 @@
 Page({
   data: {
-    selectedImageList: [],
+    selectedSourceList: [],
     swiperCurrentIndex: 0,
     tagList: ['翡翠', '玛瑙', '宝石', '么么哒'],
     showConfirmActionSheet: false
   },
   onLoad () {
     const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('getSelectedImageList', (data: {
-      selectedImageList: ISelectedImageList
+    eventChannel.on('getSelectedSourceListFromMain', (data: {
+      selectedSourceList: ISelectedSourceList
       swiperCurrentIndex: number
     }) => {
       this.setData({
-        selectedImageList: data.selectedImageList,
+        selectedSourceList: data.selectedSourceList,
         swiperCurrentIndex: data.swiperCurrentIndex
       })
       console.log('data: ', data)
@@ -26,7 +26,7 @@ Page({
     const self = this
     wx.navigateBack({
       success () {
-        eventChannel.emit('getSelectedImageList', self.data.selectedImageList)
+        eventChannel.emit('getSelectedSourceListFromEdit', self.data.selectedSourceList)
       }
     })
   },
@@ -36,14 +36,14 @@ Page({
     this.setData({ swiperCurrentIndex: current })
   },
   showActionSheetHander () {
-    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
-    selectedImageList[this.data.swiperCurrentIndex].showActionSheet = true
-    this.setData({ selectedImageList })
+    const selectedSourceList: ISelectedSourceList = [].concat(this.data.selectedSourceList)
+    selectedSourceList[this.data.swiperCurrentIndex].showActionSheet = true
+    this.setData({ selectedSourceList })
   },
   hideActionSheetHander (callback: () => {}) {
-    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
-    selectedImageList[this.data.swiperCurrentIndex].showActionSheet = false
-    this.setData({ selectedImageList }, callback)
+    const selectedSourceList: ISelectedSourceList = [].concat(this.data.selectedSourceList)
+    selectedSourceList[this.data.swiperCurrentIndex].showActionSheet = false
+    this.setData({ selectedSourceList }, callback)
   },
   selectTagHander ({
     currentTarget: {
@@ -51,22 +51,25 @@ Page({
     }
   }) {
     const { tag } = dataset
-    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
-    selectedImageList[this.data.swiperCurrentIndex].tag = tag
-    this.hideActionSheetHander(() => (this.setData({ selectedImageList })))
+    const selectedSourceList: ISelectedSourceList = [].concat(this.data.selectedSourceList)
+    selectedSourceList[this.data.swiperCurrentIndex].tag = tag
+    this.hideActionSheetHander(() => (this.setData({ selectedSourceList })))
   },
   deleteTagHander () {
-    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
-    selectedImageList[this.data.swiperCurrentIndex].tag = ''
-    this.setData({ selectedImageList })
+    const selectedSourceList: ISelectedSourceList = [].concat(this.data.selectedSourceList)
+    selectedSourceList[this.data.swiperCurrentIndex].tag = ''
+    this.setData({ selectedSourceList })
   },
   deleteCurrentSourceHander () {
-    const selectedImageList: ISelectedImageList = [].concat(this.data.selectedImageList)
-    selectedImageList.splice(this.data.swiperCurrentIndex, 1)
-    if (this.data.swiperCurrentIndex === selectedImageList.length) {
+    const selectedSourceList: ISelectedSourceList = [].concat(this.data.selectedSourceList)
+    selectedSourceList.splice(this.data.swiperCurrentIndex, 1)
+    if (this.data.swiperCurrentIndex === selectedSourceList.length) {
       this.setData({ swiperCurrentIndex: this.data.swiperCurrentIndex - 1 })
     }
-    this.setData({ selectedImageList }, this.hideConfirmActionSheetHander)
+    this.setData({ selectedSourceList }, this.hideConfirmActionSheetHander)
+    if (!this.data.selectedSourceList.length) {
+      this.complateEditHander()
+    }
   },
   showConfirmActionSheetHander () {
     this.setData({ showConfirmActionSheet: true })
