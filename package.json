@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "fix": "eslint --fix --ext .js --ext .ts app/",
+    "fix": "eslint --fix --ext .js,.ts app/",
     "test": "echo '测试报错' & exit 0"
   },
   "husky": {
@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "app/**/*.{js,ts}": [
-      "npm run fix",
+      "eslint .js,.ts",
       "git add"
     ]
   },
