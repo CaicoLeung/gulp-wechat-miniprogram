@@ -4,12 +4,10 @@
     "pages/my/createProductPost/index",
     "pages/my/myTreasure/index",
     "pages/my/index",
-    "pages/home/treasureLog/index",
-    "pages/home/articleDetail/index",
     "pages/publish/index",
-    "pages/home/atlas/index",
     "pages/publish/main/index",
-    "pages/home/treasureAtlas/index"
+    "pages/publish/edit/index",
+    "pages/home/moments/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

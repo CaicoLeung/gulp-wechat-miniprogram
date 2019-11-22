@@ -2,8 +2,22 @@
   "parser": "babel-eslint",
   "root": true,
   "extends": [
+    "standard",
     "eslint:recommended",
-    "standard"
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "parser": "babel-eslint"
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ]
+    }
   ],
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -17,7 +31,6 @@
   "env": {
     "es6": true,
     "node": true,
-    "browser": true,
     "commonjs": false,
     "mocha": true
   },
@@ -25,11 +38,11 @@
     "App": true,
     "Page": true,
     "Component": true,
-    "wx": true
+    "wx": true,
+    "WechatMiniprogram": true,
+    "getApp": true
   },
   "rules": {
-    "quotes": ["error", "single"],
-    "eqeqeq": "warn",
     "curly": "off",
     "no-cond-assign": "error",
     "guard-for-in": "warn",
@@ -41,9 +54,46 @@
     "no-extend-native": "error",
     "semi": ["error", "never"],
     "indent": ["error", 2],
-    "no-undef": "off",
     "no-console": "off",
-    "no-multi-spaces": "off",
-    "no-global-assign": "error"
+    "no-global-assign": "error",
+    "quotes": ["error", "single"],
+    "eqeqeq": "error",
+    "block-spacing": ["error", "always"],
+    "object-curly-spacing": ["error", "always", {
+      "objectsInObjects": false
+    }],
+    "space-unary-ops": ["error", {
+      "words": true,
+      "nonwords": false
+    }],
+    "no-multi-spaces": "error",
+    "no-undef": "error",
+    "space-before-function-paren": "error",
+    "@typescript-eslint/class-name-casing": ["error", {
+      "allowUnderscorePrefix": false
+    }],
+    "@typescript-eslint/explicit-function-return-type": [0, {
+      "allowExpressions": true,
+      "allowTypedFunctionExpressions": true,
+      "allowHigherOrderFunctions": false
+    }],
+    "@typescript-eslint/interface-name-prefix": [2, {
+      "prefixWithI": "always"
+    }],
+    "@typescript-eslint/member-delimiter-style": [2, {
+      "multiline": {
+        "delimiter": "none",
+        "requireLast": false
+      },
+      "singleline": {
+        "delimiter": "comma",
+        "requireLast": false
+      }
+    }],
+    "@typescript-eslint/no-this-alias":[2, {
+      "allowDestructuring": true,
+      "allowedNames": ["self"]
+    }],
+    "@typescript-eslint/triple-slash-reference": 0
   }
 }

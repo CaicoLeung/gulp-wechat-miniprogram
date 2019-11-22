@@ -1,63 +1,78 @@
-import { Options }                   from 'gulp-autoprefixer';
-import { readAppJson, writeAppJson } from './gulp/json';
-import * as path                     from 'path';
-import * as gulp                     from 'gulp';
+import { Options } from 'gulp-autoprefixer'
+import { readAppJson, writeAppJson } from './gulp/json'
+import * as path from 'path'
+import * as gulp from 'gulp'
 
 // const babel        = require('gulp-babel');
-const sassParse    = require('gulp-sass');
-const imagemin     = require('gulp-imagemin');
+import sassParse = require('gulp-sass')
+import imagemin = require('gulp-imagemin')
 // const postcss      = require('gulp-postcss');
 // const cssnano      = require('cssnano');
-const sourcemaps   = require('gulp-sourcemaps');
-const ts           = require('gulp-typescript');
+import sourcemaps = require('gulp-sourcemaps')
+import ts = require('gulp-typescript')
 // const eslint       = require('gulp-eslint')
-const autoprefixer = require('gulp-autoprefixer');
+import autoprefixer = require('gulp-autoprefixer')
 // const concat       = require('gulp-concat');
 // const uglify       = require('gulp-uglify');
-const rename       = require('gulp-rename');
-const del          = require('del');
-const colors       = require('colors');
-const yargs        = require('yargs');
+import rename = require('gulp-rename')
+import del = require('del')
+import colors = require('colors')
+import yargs = require('yargs')
 
-const appPath   = 'app/**';
-const distPath  = 'dist';
-const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/_template/*.wxml`, `!${appPath}/_component/*.wxml`];
-const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/_template/*.+(sass|scss)`, `!${appPath}/_component/*.+(sass|scss)`];
-const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`, `!${appPath}/_component/*json`];
-const tsFiles   = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/_component/*ts`, `!${appPath}/*.d.ts`];
-const imgFiles  = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`];
-const tsProject = ts.createProject('tsconfig.json');
-const root = path.join(__dirname, 'app/pages');
-const componentPath = path.join(__dirname, 'app/components');
-const _templateSource = `${appPath}/_template`;
-const _componentSource = `${appPath}/_component`;
+const appPath = 'app/**'
+const whitelist: string[] = [`!${appPath}/_template/*`, `!${appPath}/_component/*`, `!${appPath}/vant/*`]
+const distPath = 'dist'
+const wxssFiles = [`${appPath}/*.wxss`]
+const jsFiles = [`${appPath}/*.js`, `${appPath}/*.wxs`]
+const wxmlFiles = [`${appPath}/*.wxml`, ...whitelist.map(s => s + '.wxml')]
+const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, ...whitelist.map(s => s + '.(sass|scss)')]
+const jsonFiles = [`${appPath}/*.json`, ...whitelist.map(s => s + '.json')]
+const tsFiles = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/_component/*ts`, `!${appPath}/*.d.ts`]
+const imgFiles = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
+const tsProject = ts.createProject('tsconfig.json')
+const root = path.join(__dirname, 'app/pages')
+const componentPath = path.join(__dirname, 'app/components')
+const _templateSource = `${appPath}/_template`
+const _componentSource = `${appPath}/_component`
 
 const clean = async () => {
-  const deletePaths = await del('dist/**');
-  console.log(colors.red('以下的文件和目录被删除:\n') + colors.yellow(deletePaths.join('\n')));
+  const deletePaths = await del('dist/**')
+  console.log(colors.red('以下的文件和目录被删除:\n') + colors.yellow(deletePaths.join('\n')))
 }
-gulp.task(clean);
+gulp.task(clean)
+
+const js = () => {
+  return gulp.src(jsFiles, { since: gulp.lastRun(js) })
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(js)
+
+const wxss = () => {
+  return gulp.src(wxssFiles, { since: gulp.lastRun(wxss) })
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(wxss)
 
 const wxml = () => {
   return gulp.src(wxmlFiles, { since: gulp.lastRun(wxml) })
-    .pipe(gulp.dest(distPath));
-};
-gulp.task(wxml);
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(wxml)
 
 const typescript = () => {
   return gulp.src(tsFiles, { since: gulp.lastRun(typescript) })
     .pipe(sourcemaps.init())
     .pipe(tsProject())
-    .on('error', (err: any) => { console.error(err) })
+    .on('error', (err: string) => { console.error(err) })
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(distPath));
-};
-gulp.task(typescript);
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(typescript)
 
 const json = () => {
   return gulp.src(jsonFiles, { since: gulp.lastRun(json) })
     .pipe(gulp.dest(distPath))
-};
+}
 gulp.task(json)
 
 const sass = () => {
@@ -65,7 +80,7 @@ const sass = () => {
     browsers: ['last 2 versions'],
     cascade: true,
     remove: true
-  };
+  }
   return gulp.src(sassFiles)
     .pipe(sourcemaps.init())
     .pipe(sassParse({ outputStyle: 'compressed' }).on('error', sassParse.logError))
@@ -74,43 +89,45 @@ const sass = () => {
       extname: '.wxss'
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(distPath));
-};
-gulp.task(sass);
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(sass)
 
 const images = () => {
   return gulp.src(imgFiles, { since: gulp.lastRun(images) })
     .pipe(imagemin())
-    .pipe(gulp.dest(distPath));
-};
-gulp.task(images);
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(images)
 
 // parallel
-gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxml', 'typescript', 'json', 'sass')));
+gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxss', 'js', 'wxml', 'typescript', 'json', 'sass')))
 
 // watch
-gulp.task('watch', gulp.series('build', () => {
-  gulp.watch(imgFiles, images);
-  gulp.watch(sassFiles, sass);
-  gulp.watch(tsFiles, typescript);
-  gulp.watch(jsonFiles, json);
-  gulp.watch(wxmlFiles, wxml);
-}));
+gulp.task('watch', () => {
+  gulp.watch(imgFiles, images)
+  gulp.watch(wxssFiles, wxss)
+  gulp.watch(jsFiles, js)
+  gulp.watch(sassFiles, sass)
+  gulp.watch(tsFiles, typescript)
+  gulp.watch(jsonFiles, json)
+  gulp.watch(wxmlFiles, wxml)
+})
 
-const argv = yargs.argv;
-let target = '';
-let createPath = '';
+const argv = yargs.argv
+let target: string | unknown
+let createPath = ''
 let createTemplate = ''
 
-const create = () => {
+const create = async () => {
   if (argv.page) {
-    target = argv.page;
+    target = argv.page
     createTemplate = _templateSource
     createPath = root
-    let appJson = readAppJson();
-    if (appJson.pages) {
-      appJson.pages.push(`pages/${target}/index`);
-      writeAppJson(JSON.stringify(appJson));
+    const appJson = await readAppJson()
+    if (appJson.hasOwnProperty('pages')) {
+      appJson.pages.push(`pages/${target}/index`)
+      writeAppJson(appJson)
     }
   } else if (argv.component) {
     target = argv.component
@@ -122,9 +139,9 @@ const create = () => {
   }
   return gulp.src(path.join(createTemplate, '*.*'))
     .pipe(rename({
-      dirname: target,
+      dirname: target.toString(),
       basename: 'index'
     }))
-    .pipe(gulp.dest(path.join(createPath)));
-};
-gulp.task(create);
+    .pipe(gulp.dest(path.join(createPath)))
+}
+gulp.task(create)

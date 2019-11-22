@@ -7,16 +7,16 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    treasureList:[
-      {goodsname:'翡翠'},
-      {goodsname:'和田玉'},
-      {goodsname:'玛瑙'},
-      {goodsname:'南红'},
-      {goodsname:'宝典'},
-      {goodsname:'钻石'},
-      {goodsname:'黄金'},
-      {goodsname:'书画'},
-    ],
+    treasureList: [
+      { goodsname: '翡翠' },
+      { goodsname: '和田玉' },
+      { goodsname: '玛瑙' },
+      { goodsname: '南红' },
+      { goodsname: '宝典' },
+      { goodsname: '钻石' },
+      { goodsname: '黄金' },
+      { goodsname: '书画' }
+    ]
   },
   onLoad () {
     console.log(111)
@@ -28,11 +28,14 @@ Page({
       })
     }
   },
-  getUserInfo (e: any) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  getUserInfo ({
+    detail = {
+      userInfo: {}
+    }
+  }) {
+    app.globalData.userInfo = detail.userInfo
     this.setData({
-      userInfo: e.detail.userInfo,
+      userInfo: detail.userInfo,
       hasUserInfo: true
     })
   }
