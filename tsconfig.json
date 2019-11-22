@@ -17,7 +17,7 @@
     ],
     "types": [
       "node_modules/@types",
-      "miniprogram-api-typings"
+      "app/libs"
     ]
   },
   "include": [

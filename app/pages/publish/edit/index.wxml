@@ -1,0 +1,99 @@
+<view class="publish-edit-container">
+  <navigation-bar background="transparent"
+                  backgroundColorTop="transparent"
+                  iconTheme="white"
+                  back
+                  delete
+                  bind:back="navigationBackHander"
+                  bind:delete="showConfirmActionSheetHander"
+  >
+    <text slot="center">{{swiperCurrentIndex + 1}}/{{selectedSourceList.length}}</text>
+  </navigation-bar>
+  <block wx:if="{{selectedSourceList.length}}">
+    <swiper class="source-preview"
+            current="{{swiperCurrentIndex}}"
+            bind:change="swiperChangeHander"
+    >
+      <swiper-item wx:for="{{selectedSourceList}}"
+                   wx:key="{{item.path}}"
+                   class="source-preview-item"
+      >
+        <!-- 上遮罩 -->
+        <view class="top-mark"></view>
+        <!-- 下遮罩 -->
+        <view class="bottom-mark"></view>
+        <block wx:if="{{item.type === 'image'}}">
+          <image class="source-preview-entity"
+                 src="{{item.path}}"
+                 style="height: {{750 * item.height / item.width}}rpx;"
+          ></image>
+        </block>
+        <block wx:elif="{{item.type === 'video'}}">
+          <video class="source-preview-entity"
+                 src="{{item.tempFilePath}}"
+                 show-fullscreen-btn="{{false}}"
+                 play-btn-position="center"
+                 style="height: {{750 * item.height / item.width}}rpx;"
+          ></video>
+        </block>
+        <view class="selected-tag" wx:if="{{item.tag}}">
+          <image class="tag-small-icon" src="/assets/img/publish/tag-little@2x.png" mode="widthFix"></image>
+          <text>{{item.tag}}</text>
+          <image class="delete-tag-hander"
+                 src="/assets/img/publish/close@2x.png"
+                 mode="widthFix"
+                 bind:tap="deleteTagHander"
+          ></image>
+        </view>
+        <view class="edit-buttons">
+          <view class="tag-select-hander" bind:tap="showActionSheetHander">
+            <image class="tag-icon" src="/assets/img/publish/tag-white@2x.png" mode="widthFix"></image>
+            <text>标签</text>
+          </view>
+          <view class="confirm-hander" bind:tap="complateEditHander">
+            <text>完成</text>
+          </view>
+        </view>
+        <vant-popup show="{{item.showActionSheet}}"
+                    position="bottom"
+                    round
+                    custom-style="opacity: 0.85;"
+                    bind:close="hideActionSheetHander"
+        >
+          <view class="actionSheet">
+            <view class="actionSheet-head">
+              <text>选择标签</text>
+            </view>
+            <view class="actionSheet-list">
+              <view class="actionSheet-item"
+                    wx:for="{{tagList}}"
+                    wx:key="{{index}}"
+                    data-tag="{{item}}"
+                    bind:tap="selectTagHander"
+              >
+                <text>{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </vant-popup>
+      </swiper-item>
+    </swiper>
+  </block>
+  <!--  删除确认弹窗  -->
+  <vant-popup show="{{showConfirmActionSheet}}"
+              position="bottom"
+              round
+              bind:close="hideActionSheetHander">
+    <view class="confirm-actionSheet">
+      <view class="actionSheet-head">
+        <text>确定要删除吗？</text>
+      </view>
+      <view class="actionSheet-confirm" bind:tap="deleteCurrentSourceHander">
+        <text>删除</text>
+      </view>
+      <view class="actionSheet-cancel" bind:tap="hideConfirmActionSheetHander">
+        <text>取消</text>
+      </view>
+    </view>
+  </vant-popup>
+</view>

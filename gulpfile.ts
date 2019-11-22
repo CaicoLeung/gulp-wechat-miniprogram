@@ -20,10 +20,13 @@ import colors = require('colors')
 import yargs = require('yargs')
 
 const appPath = 'app/**'
+const whitelist: string[] = [`!${appPath}/_template/*`, `!${appPath}/_component/*`, `!${appPath}/vant/*`]
 const distPath = 'dist'
-const wxmlFiles = [`${appPath}/*.wxml`, `!${appPath}/_template/*.wxml`, `!${appPath}/_component/*.wxml`]
-const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, `!${appPath}/_template/*.+(sass|scss)`, `!${appPath}/_component/*.+(sass|scss)`]
-const jsonFiles = [`${appPath}/*.json`, `!${appPath}/_template/*json`, `!${appPath}/_component/*json`]
+const wxssFiles = [`${appPath}/*.wxss`]
+const jsFiles = [`${appPath}/*.js`, `${appPath}/*.wxs`]
+const wxmlFiles = [`${appPath}/*.wxml`, ...whitelist.map(s => s + '.wxml')]
+const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, ...whitelist.map(s => s + '.(sass|scss)')]
+const jsonFiles = [`${appPath}/*.json`, ...whitelist.map(s => s + '.json')]
 const tsFiles = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/_component/*ts`, `!${appPath}/*.d.ts`]
 const imgFiles = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
 const tsProject = ts.createProject('tsconfig.json')
@@ -37,6 +40,18 @@ const clean = async () => {
   console.log(colors.red('以下的文件和目录被删除:\n') + colors.yellow(deletePaths.join('\n')))
 }
 gulp.task(clean)
+
+const js = () => {
+  return gulp.src(jsFiles, { since: gulp.lastRun(js) })
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(js)
+
+const wxss = () => {
+  return gulp.src(wxssFiles, { since: gulp.lastRun(wxss) })
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(wxss)
 
 const wxml = () => {
   return gulp.src(wxmlFiles, { since: gulp.lastRun(wxml) })
@@ -86,16 +101,18 @@ const images = () => {
 gulp.task(images)
 
 // parallel
-gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxml', 'typescript', 'json', 'sass')))
+gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxss', 'js', 'wxml', 'typescript', 'json', 'sass')))
 
 // watch
-gulp.task('watch', gulp.series('build', () => {
+gulp.task('watch', () => {
   gulp.watch(imgFiles, images)
+  gulp.watch(wxssFiles, wxss)
+  gulp.watch(jsFiles, js)
   gulp.watch(sassFiles, sass)
   gulp.watch(tsFiles, typescript)
   gulp.watch(jsonFiles, json)
   gulp.watch(wxmlFiles, wxml)
-}))
+})
 
 const argv = yargs.argv
 let target: string | unknown
@@ -108,7 +125,6 @@ const create = async () => {
     createTemplate = _templateSource
     createPath = root
     const appJson = await readAppJson()
-    console.log('appJson: ', appJson)
     if (appJson.hasOwnProperty('pages')) {
       appJson.pages.push(`pages/${target}/index`)
       writeAppJson(appJson)
