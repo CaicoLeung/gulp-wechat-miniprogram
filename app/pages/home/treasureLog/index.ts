@@ -3,7 +3,6 @@ Page({
 
   },
   test () {
-
+    console.log(12121)
   }
-  sdsdsds
 })
