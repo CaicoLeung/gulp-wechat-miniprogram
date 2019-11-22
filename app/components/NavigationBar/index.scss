@@ -2,6 +2,7 @@ page {
   --height: 44px; /* 4*2+32 */
   --right: 97px; /* 10+87 */
   --navBarExtendHeight: 4px;
+
   box-sizing: border-box;
 }
 .lxy-nav-bar {
@@ -13,18 +14,21 @@ page {
   --height: 44px; /* 4*2+32 */
   --right: 97px; /* 10+87 */
   --navBarExtendHeight: 4px;
+
   box-sizing: border-box;
 }
 .lxy-nav-bar .android {
   --height: 48px; /* 8*2+32 */
   --right: 96px; /* 10+87 */
   --navBarExtendHeight: 4px;
+
   box-sizing: border-box;
 }
 .lxy-nav-bar .devtools {
   --height: 42px; /* 5*2+32 */
   --right: 88px; /* 10+87 */
   --navBarExtendHeight: 4px;
+
   box-sizing: border-box;
 }
 .lxy-nav-bar__inner {
@@ -43,6 +47,7 @@ page {
   position: relative;
   width: var(--right);
   height: 32px;
+
   /*  padding-left: 10px; */
   display: flex;
   align-items: center;
@@ -99,7 +104,7 @@ page {
   justify-content: center;
   padding-left: 10px;
   &.white {
-    color: #FFFFFF;
+    color: #FFF;
   }
 }
 .lxy-nav-bar__inner .lxy-nav-bar__center .lxy-nav-bar__center-title {

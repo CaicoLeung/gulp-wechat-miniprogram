@@ -1,0 +1,5 @@
+app/vant
+app/_template
+app/_component
+node_modules
+dist
