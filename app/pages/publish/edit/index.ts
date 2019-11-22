@@ -76,5 +76,5 @@ Page({
   },
   hideConfirmActionSheetHander () {
     this.setData({ showConfirmActionSheet: false })
-  },
+  }
 })

@@ -1,1 +1,1 @@
-export declare const openType: string;
+export declare const openType: string

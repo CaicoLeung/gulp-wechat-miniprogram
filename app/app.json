@@ -5,7 +5,8 @@
     "pages/my/index",
     "pages/publish/index",
     "pages/publish/main/index",
-    "pages/publish/edit/index"
+    "pages/publish/edit/index",
+    "pages/home/moments/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

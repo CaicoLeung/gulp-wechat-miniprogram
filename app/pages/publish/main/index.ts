@@ -2,8 +2,8 @@ import { WXGetImageInfoAsync } from '../../../utils/util'
 
 Page({
   data: {
-    maximumImageCount: 9, //可选择最多图片数量
-    maximumVideoCount: 1, //可选择最多视频数量
+    maximumImageCount: 9, // 可选择最多图片数量
+    maximumVideoCount: 1, // 可选择最多视频数量
     selectedSourceList: [],
     selectedVideo: '',
     actionSheetItemList: [
@@ -81,7 +81,7 @@ Page({
       return
     }
     const actionSheetItemList = !this.data.selectedSourceList.length ? ['拍摄照片', '拍摄视频', '从手机相册选择照片', '从手机相册选择视频']
-      :selectedImageSourceLength ? ['拍摄照片', '从手机相册选择照片'] : ['拍摄视频', '从手机相册选择视频']
+      : selectedImageSourceLength ? ['拍摄照片', '从手机相册选择照片'] : ['拍摄视频', '从手机相册选择视频']
     this.setData({ actionSheetItemList })
     const actionOption: IChooseSourceOption = {
       sourceType: ['camera']
@@ -144,5 +144,5 @@ Page({
     detail: { value = '' }
   }) {
     this.setData({ text: value })
-  },
+  }
 })

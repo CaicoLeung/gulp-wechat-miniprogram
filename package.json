@@ -5,7 +5,21 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "fix": "eslint --fix --ext .js,.ts app/",
+    "test": "echo \"Error: 测试报错\" && exit 1"
+  },
+  "lint-staged": {
+    "app/**/*.{js,ts}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "echo \"提交完毕\""
+    }
   },
   "author": "caico",
   "license": "ISC",
@@ -17,6 +31,7 @@
     "colors": "^1.4.0",
     "cssnano": "^4.1.10",
     "del": "^4.1.1",
+    "eslint": "^6.6.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.2.0",
@@ -33,7 +48,9 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-tslint": "^8.1.4",
     "gulp-uglify": "^3.0.2",
+    "husky": "^2.4.1",
     "jshint": "^2.10.3",
+    "lint-staged": "^9.4.3",
     "node-sass": "^4.13.0"
   },
   "dependencies": {

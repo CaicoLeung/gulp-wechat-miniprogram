@@ -10,4 +10,4 @@ Component({
       console.log('test')
     }
   }
-});
+})

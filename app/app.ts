@@ -44,27 +44,27 @@ App<IAppOption>({
     try {
       rect = wx.getMenuButtonBoundingClientRect()
     } catch (error) {
-      let gap: number //胶囊按钮上下间距 使导航内容居中
-      let width = 96 //胶囊的宽度
+      let gap: number // 胶囊按钮上下间距 使导航内容居中
+      let width = 96 // 胶囊的宽度
       if (systemInfo.platform === 'android') {
         gap = 8
         width = 96
       } else if (systemInfo.platform === 'devtools') {
         if (isIOS) {
-          gap = 5.5 //开发工具中IOS手机
+          gap = 5.5 // 开发工具中IOS手机
         } else {
-          gap = 7.5 //开发工具中android和其他手机
+          gap = 7.5 // 开发工具中android和其他手机
         }
       } else {
         gap = 4
         width = 88
       }
       if (!systemInfo.statusBarHeight) {
-        //开启wifi的情况下修复statusBarHeight值获取不到
+        // 开启wifi的情况下修复statusBarHeight值获取不到
         systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20
       }
       rect = {
-        //获取不到胶囊信息就自定义重置一个
+        // 获取不到胶囊信息就自定义重置一个
         bottom: systemInfo.statusBarHeight + gap + 32,
         height: 32,
         left: systemInfo.windowWidth - width - 10,
@@ -76,11 +76,11 @@ App<IAppOption>({
     }
     const navBarHeight = 2 * rect.top - systemInfo.statusBarHeight + rect.height
     this.globalData.globalSystemInfo = {
-      navBarHeight,//导航栏高度不包括statusBarHeight
-      capsulePosition: rect,//右上角胶囊按钮信息bottom: 58 height: 32 left: 317 right: 404 top: 26 width: 87 目前发现在大多机型都是固定值 为防止不一样所以会使用动态值来计算nav元素大小
-      isIOS,//是否isIOS
+      navBarHeight, // 导航栏高度不包括statusBarHeight
+      capsulePosition: rect, // 右上角胶囊按钮信息bottom: 58 height: 32 left: 317 right: 404 top: 26 width: 87 目前发现在大多机型都是固定值 为防止不一样所以会使用动态值来计算nav元素大小
+      isIOS, // 是否isIOS
       navBarExtendHeight: isIOS ? 4 : 0,
       ...systemInfo
-    } //将信息保存到全局变量中
+    } // 将信息保存到全局变量中
   }
 })
