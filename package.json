@@ -9,17 +9,17 @@
     "fix": "eslint --fix --ext .js,.ts app/",
     "test": "echo \"Error: 测试报错\" && exit 1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "echo \"提交完毕\""
-    }
-  },
   "lint-staged": {
     "app/**/*.{js,ts}": [
       "eslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "echo \"提交完毕\""
+    }
   },
   "author": "caico",
   "license": "ISC",
