@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "fix": "eslint --fix --ext .js,.ts app/"
+    "fix": "eslint --fix --ext .js,.ts app/",
+    "test": "echo \"Error: 测试报错\" && exit 1"
   },
   "husky": {
     "hooks": {
