@@ -6,9 +6,10 @@
 2. 支持Scss, Sass
 3. 支持样式补全
 4. 支持Eslint
-5. 支持图片压缩
-6. 支持命令行创建page目录(含wxml, ts, wxss, json)
-7. 支持watch监听
+5. 支持Stylelint
+6. 支持图片压缩
+7. 支持命令行创建page和component目录和(包括wxml, ts, wxss, json文件)
+8. 支持热更新
 
 ## 开始使用
 1. 确保已全局安装gulp
