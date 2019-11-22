@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "动态详情",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/NavigationBar/index",
+    "vant-popup": "/vant/popup/index"
+  }
+}

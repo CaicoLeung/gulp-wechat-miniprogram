@@ -5,8 +5,13 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "lint": "eslint app --ext .ts --cache --fix",
+    "pre-lint": "node lint.js"
   },
+  "pre-commit": [
+    "pre-lint"
+  ],
   "author": "caico",
   "license": "ISC",
   "devDependencies": {
@@ -17,6 +22,7 @@
     "colors": "^1.4.0",
     "cssnano": "^4.1.10",
     "del": "^4.1.1",
+    "eslint": "^6.6.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.2.0",
@@ -34,7 +40,8 @@
     "gulp-tslint": "^8.1.4",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.10.3",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.13.0",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "@types/gulp": "^4.0.6",
