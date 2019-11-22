@@ -11,24 +11,24 @@
       border-radius: 6rpx;
       background: #F8F8F8;
       position: relative;
-      &:before {
+      &::before {
         content: '';
         display: block;
         width: 4rpx;
         height: 62rpx;
-        background: #999999;
+        background: #999;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: 5;
       }
-      &:after {
+      &::after {
         content: '';
         display: block;
         width: 62rpx;
         height: 4rpx;
-        background: #999999;
+        background: #999;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -41,7 +41,7 @@
       width: 130rpx;
       height: 130rpx;
       border-radius: 6rpx;
-      background: #000000;
+      background: #000;
       margin-left: 17rpx;
       overflow: hidden;
       position: relative;
@@ -75,17 +75,17 @@
     .input {
       width: 100%;
       font-size: 30rpx;
-      color: #333333;
+      color: #333;
       font-weight: 500rpx;
     }
     .input-title-placeholder {
-      color: #999999;
+      color: #999;
       font-size: 30rpx;
       font-weight: normal;
     }
     .word-count {
       font-size: 24rpx;
-      color: #999999;
+      color: #999;
       margin-left: 60rpx;
     }
   }
@@ -95,12 +95,12 @@
       width: 100%;
       padding: 26rpx 0;
       height: 254rpx;
-      color: #333333;
+      color: #333;
       font-size: 30rpx;
       font-weight: normal;
     }
     .input-text-placeholder {
-      color: #999999;
+      color: #999;
       font-size: 30rpx;
       font-weight: normal;
     }
@@ -109,7 +109,7 @@
       height: 86rpx;
       line-height: 86rpx;
       text-align: right;
-      color: #999999;
+      color: #999;
       font-size: 24rpx;
       border-bottom: 1rpx solid #DCDCDC;
     }
@@ -136,13 +136,13 @@
       }
       .title {
         font-size: 30rpx;
-        color: #333333;
+        color: #333;
         font-weight: 600;
       }
     }
     .linked-secondary {
       .text {
-        color: #888888;
+        color: #888;
         font-size: 28rpx;
       }
       .icon {
