@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/home/treasureAtlas/index",
     "pages/home/index",
+    "pages/my/myTreasure/index",
     "pages/my/index",
-    "pages/publish/index",
     "pages/home/treasureLog/index",
+    "pages/home/articleDetail/index",
+    "pages/publish/index",
     "pages/home/atlas/index",
-    "pages/publish/main/index"
+    "pages/publish/main/index",
+    "pages/home/treasureAtlas/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

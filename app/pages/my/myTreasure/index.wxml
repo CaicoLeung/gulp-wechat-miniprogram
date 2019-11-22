@@ -1,0 +1,11 @@
+<view class="my-all-treasure-box">
+      <view class="treasure-detail">
+          <view class="treasure-list-box" wx:for="{{goodsList}}" wx:key="{{idx}}">
+              <image class="imgs" src="https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png"></image>
+              <view class="usermessage">
+                    <view class="username-box">{{item.username}}</view>
+                    <view class="time">已玩12天，29次</view>
+              </view>
+          </view>
+      </view>
+</view>

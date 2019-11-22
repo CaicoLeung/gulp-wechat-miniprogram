@@ -1,0 +1,24 @@
+.my-all-treasure-box{
+  .treasure-detail{
+    display:flex;
+    .treasure-list-box{
+      width:342rpx;
+      height:342rpx;
+      border-radius:10rpx;
+      .imgs{
+        width:342rpx;
+        height:342rpx;
+      }
+      .usermessage{
+        color:#FFF;
+        .username-box{
+          font-size:34rpx;
+          font-weight:500;
+        }
+        .time{
+          font-size:28rpx;
+        }
+      }
+    }
+  }
+}
