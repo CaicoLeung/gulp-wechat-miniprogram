@@ -26,9 +26,10 @@ Page({
   onLoad() {
     console.log(111)
   }
-  titleClick(e){
+  titleClick({currentTarget:{dataset}}){
+    const {index} = dataset
     this.setData({
-      selected:e.currentTarget.dataset.index
+      selected:index
     })
   }
 });

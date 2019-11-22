@@ -1,0 +1,87 @@
+.auctionDetail-box{
+  .auctionInformation{
+    width:702rpx;
+    height:562rpx;
+    border-radius:24rpx;
+    background:#fff;
+    box-shadow:0px 16px 34px 0px rgba(0,0,0,0.15);
+    margin:24rpx;
+    .productMessage{
+      padding:32rpx 32rpx 24rpx;
+      display:flex;
+      justify-content: space-between;
+      .productTxtBox{
+        .productTitle{
+          font-size:36rpx;
+          font-weight:600;
+          text{
+            font-size:26rpx;
+            font-weight:400;
+          }
+        }
+        .anothername{
+          font-size:24rpx;
+        }
+      }
+      .share-icon{
+        width:38rpx;
+        height:38rpx;
+        margin-top:6rpx;
+      }
+    }
+    .videoAndPhotoBox{
+      padding:0 32rpx;
+      .videoBox{
+        height:296rpx;
+        display:flex;
+        justify-content: space-between;
+        video{
+          width:484rpx;
+          height:296rpx;
+          border-radius:6rpx;
+        }
+        .pictures{
+          .photoBox{
+            width:144rpx;
+            image{
+              width:144rpx;
+              height:144rpx;
+              border-radius:10rpx;
+            }
+          }
+        }
+      }
+    }
+    .productExplain{
+      font-size:24rpx;
+      color:#888888;
+      padding:0 32rpx;
+      margin-top:24rpx;
+    }
+  }
+  .image-Icon-Box{
+    display:flex;
+    justify-content:space-around;
+    .icon-Message{
+      width:140rpx;
+      text-align: center;
+      .imgs{
+        width:132rpx;
+        height:140rpx;
+      }
+      view{
+        color:#666666;
+        font-size:24rpx;
+      }
+    }
+  }
+  .sendpost-Btn{
+    position:fixed;
+    bottom:30rpx;
+    left:297rpx;
+    image{
+      width:156rpx;
+      height:156rpx;
+    }
+  }
+}
