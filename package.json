@@ -7,7 +7,7 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "fix": "eslint --fix --ext .js --ext .ts app/",
-    "test": "echo 'hello world'"
+    "test": "echo 'hello world!'"
   },
   "husky": {
     "hooks": {
