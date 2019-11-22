@@ -1,17 +1,11 @@
 {
   "pages": [
-    "pages/home/treasureAtlas/index",
     "pages/home/index",
+    "pages/home/treasureAtlas/index",
     "pages/my/index",
     "pages/publish/index",
-<<<<<<< HEAD
     "pages/publish/main/index",
     "pages/test/index"
-=======
-    "pages/home/treasureLog/index",
-    "pages/home/atlas/index",
-    "pages/publish/main/index"
->>>>>>> lzc
   ],
   "window": {
     "backgroundTextStyle": "light",
