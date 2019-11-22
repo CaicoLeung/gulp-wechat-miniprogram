@@ -1,16 +1,34 @@
 .my-all-treasure-box{
   .treasure-detail{
     display:flex;
+    padding: 0 24rpx;
+    justify-content: space-between;
+    flex-wrap: wrap;
     .treasure-list-box{
       width:342rpx;
       height:342rpx;
       border-radius:10rpx;
+      background:rgba(0,0,0,1);
+      opacity:0.3;
+      overflow: hidden;
+      position:relative;
+      margin-top:20rpx;
       .imgs{
         width:342rpx;
         height:342rpx;
       }
+      .screen-icon{
+        width:28rpx;
+        height:6rpx;
+        position: absolute;
+        top:24rpx;
+        right:20rpx;
+      }
       .usermessage{
         color:#FFF;
+        position:absolute;
+        top:238rpx;
+        left:20rpx;
         .username-box{
           font-size:34rpx;
           font-weight:500;
@@ -19,6 +37,43 @@
           font-size:28rpx;
         }
       }
+    }
+  }
+  .nodetail-box{
+    text-align: center;
+    margin-top:353rpx;
+    image{
+      width: 240rpx;
+      height:216rpx;
+    }
+    view{
+      color:#888888;
+      font-size:28rpx;
+    }
+  }
+  .btn-box{
+    text-align: center;
+    width:400rpx;
+    position:fixed;
+    left:175rpx;
+    bottom:40rpx;
+    image{
+      width:360rpx;
+      height:114rpx;
+      margin-bottom: 20rpx;
+    }
+    .create-treasure{
+      width:360rpx;
+      height:90rpx;
+      line-height: 90rpx;
+      color:#fff;
+      font-size:32rpx;
+      background:linear-gradient(90deg,rgba(254,100,149,1) 0%,rgba(244,74,72,1) 100%);
+      box-shadow:0px 8px 20px 0px rgba(138,138,138,0.28);
+      border-radius:50rpx;
+      text-align: center;
+      font-weight:500;
+      margin:0 20rpx;
     }
   }
 }

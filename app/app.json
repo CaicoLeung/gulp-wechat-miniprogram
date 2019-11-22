@@ -2,6 +2,8 @@
   "pages": [
     "pages/home/index",
     "pages/home/treasureAtlas/index",
+    "pages/my/createProductPost/index",
+    "pages/my/myTreasure/index",
     "pages/my/index",
     "pages/publish/index",
     "pages/publish/main/index",
