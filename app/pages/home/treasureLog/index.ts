@@ -23,10 +23,10 @@ Page({
     index: 0,
     selected: 0
   },
-  onLoad () {
+  onLoad() {
     console.log(111)
   },
-  titleClick ({
+  titleClick({
     currentTarget: {
       dataset = {
         index: 0

@@ -1,15 +1,6 @@
 Component({
-  properties: {
-    _example: {
-      type: String,
-      value: ''
-    }
-  },
-  methods: {
-    _exampleFunc () {
-      console.log('test')
-    }
-  },
+  properties: {},
+  methods: {},
   data: {
     auctionList: [
       { username: '小东' },

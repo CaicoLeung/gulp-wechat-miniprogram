@@ -2,34 +2,36 @@
 
 App<IAppOption>({
   globalData: {},
-  onLaunch () {
+  onLaunch() {
     this.getSystemInfoHander()
     this.WXLoginHander()
     this.WXGetSettingHander()
   },
-  WXLoginHander () {
+  WXLoginHander() {
     // 登录
     wx.login({
-      success: res => {
+      success: (res) => {
         console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
   },
-  WXGetSettingHander () {
+  WXGetSettingHander() {
     // 获取用户信息
     wx.getSetting({
-      success: res => {
+      success: (res: WechatMiniprogram.GetSettingSuccessCallbackResult) => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
-            success: res => {
+            success: (
+              info: WechatMiniprogram.GetUserInfoSuccessCallbackResult
+            ) => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.globalData.userInfo = info.userInfo
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+                this.userInfoReadyCallback(info)
               }
             }
           })
@@ -37,7 +39,7 @@ App<IAppOption>({
       }
     })
   },
-  getSystemInfoHander () {
+  getSystemInfoHander() {
     const systemInfo: WechatMiniprogram.GetSystemInfoSyncResult = wx.getSystemInfoSync()
     const isIOS = !!(systemInfo.system.toLowerCase().search('ios') + 1)
     let rect: WechatMiniprogram.Rect
@@ -61,7 +63,8 @@ App<IAppOption>({
       }
       if (!systemInfo.statusBarHeight) {
         // 开启wifi的情况下修复statusBarHeight值获取不到
-        systemInfo.statusBarHeight = systemInfo.screenHeight - systemInfo.windowHeight - 20
+        systemInfo.statusBarHeight =
+          systemInfo.screenHeight - systemInfo.windowHeight - 20
       }
       rect = {
         // 获取不到胶囊信息就自定义重置一个
@@ -70,7 +73,7 @@ App<IAppOption>({
         left: systemInfo.windowWidth - width - 10,
         right: systemInfo.windowWidth - 10,
         top: systemInfo.statusBarHeight + gap,
-        width: width
+        width
       }
       console.error('getMenuButtonBoundingClientRect Error', error)
     }

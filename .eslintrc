@@ -2,8 +2,9 @@
   "parser": "babel-eslint",
   "root": true,
   "extends": [
-    "standard",
+    "airbnb",
     "prettier",
+    "standard",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -48,7 +49,6 @@
     "getApp": true
   },
   "rules": {
-    "prettier/prettier": 2,
     "curly": "off",
     "no-cond-assign": "error",
     "guard-for-in": "warn",
@@ -72,9 +72,13 @@
       "words": true,
       "nonwords": false
     }],
+    "no-nested-ternary": "off",
     "no-multi-spaces": "error",
     "no-undef": "error",
-    "space-before-function-paren": "error",
+    "space-before-function-paren": "off",
+    "import/no-unresolved": "off",
+    "no-plusplus": "off",
+    "no-shadow": "off",
     "@typescript-eslint/class-name-casing": ["error", {
       "allowUnderscorePrefix": false
     }],
