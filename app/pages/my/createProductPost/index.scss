@@ -1,22 +1,22 @@
-.create-product-box{
-  .picture-cover{
-    .photo-box{
+.create-product-box {
+  .picture-cover {
+    .photo-box {
       width:183rpx;
       height:183rpx;
       text-align: center;
       background:#F8F8F8;
       margin:86rpx 284rpx 0;
-      image{
+      image {
         width:69rpx;
         height:68rpx;
         margin-top:31rpx;
       }
-      view{
+      view {
         color:#999999;
         font-size:26rpx;
       }
     }
-    .input-box{
+    .input-box {
       display:flex;
       width:654rpx;
       height:64rpx;
@@ -25,21 +25,21 @@
       padding: 0 16rpx;
       justify-content: space-between;
       margin:110rpx 32rpx 47rpx;
-      input{
+      input {
         height:64rpx;
         line-height: 64rpx;
         font-size:28rpx;
       }
-      view{
+      view {
         font-size:24rpx;
         color:#999999;
       }
     }
-    .btn-box{
+    .btn-box {
       width: 690rpx;
       height: 90rpx;
       line-height: 90rpx;
-      color:#fff;
+      color:#FFFFFF;
       font-size:32rpx;
       font-weight:500;
       background-image:linear-gradient(to right,rgba(254,100,149,1) 0%,rgba(244,74,72,1) 100%);
