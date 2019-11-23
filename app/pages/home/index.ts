@@ -6,16 +6,15 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     treasureList: [
-      { goodsname: '翡翠' },
-      { goodsname: '和田玉' },
-      { goodsname: '玛瑙' },
-      { goodsname: '南红' },
-      { goodsname: '宝典' },
-      { goodsname: '钻石' },
-      { goodsname: '黄金' },
-      { goodsname: '书画' }
+      { categoryName: '翡翠' },
+      { categoryName: '和田玉' },
+      { categoryName: '玛瑙' },
+      { categoryName: '南红' },
+      { categoryName: '宝典' },
+      { categoryName: '钻石' },
+      { categoryName: '黄金' },
+      { categoryName: '书画' }
     ]
   },
   onLoad() {

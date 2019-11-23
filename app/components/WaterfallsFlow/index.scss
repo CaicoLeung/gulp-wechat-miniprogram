@@ -1,0 +1,9 @@
+@import "../../templates/waterfallsFlowTemplate.scss";
+.waterfallsFlow-component {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .left-flow, .right-flow {
+    width: 100%;
+  }
+}

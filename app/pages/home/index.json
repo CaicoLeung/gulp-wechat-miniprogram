@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "万物宝典",
   "usingComponents": {
-    "treasureLogList": "../../components/treasureLogList/index"
+    "treasurelog-list": "/components/treasureLogList/index",
+    "waterfalls-flow": "/components/WaterfallsFlow/index"
   }
 }
