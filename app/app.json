@@ -8,7 +8,8 @@
     "pages/publish/index",
     "pages/publish/main/index",
     "pages/publish/edit/index",
-    "pages/home/moments/index"
+    "pages/home/moments/index",
+    "pages/home/guide/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

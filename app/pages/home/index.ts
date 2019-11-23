@@ -38,5 +38,13 @@ Page({
       userInfo: detail.userInfo,
       hasUserInfo: true
     })
+  },
+  navigateToHander({
+    currentTarget: {
+      dataset = { url: '' }
+    }
+  }) {
+    const { url } = dataset
+    wx.navigateTo({ url })
   }
 })

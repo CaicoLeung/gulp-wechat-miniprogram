@@ -1,0 +1,94 @@
+.guide-container {
+  width: 100%;
+  .cover-image {
+    padding: 0 32rpx;
+    height: 374rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    .mark {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      background: #000000;
+      opacity: 0.4;
+    }
+    .title {
+      position: absolute;
+      left: 32rpx;
+      right: 32rpx;
+      top: 150rpx;
+      color: #FFFFFF;
+      font-size: 50rpx;
+      font-weight: 500;
+      line-height: 70rpx;
+      z-index: 10;
+    }
+  }
+  .category {
+    width: 100%;
+    padding-top: 43rpx;
+    position: relative;
+    top: -72rpx;
+    background: #FFFFFF;
+    border-radius: 24rpx 24rpx 0 0;
+    overflow: hidden;
+    z-index: 20;
+    .first-level-node {
+      width: 100%;
+      padding-bottom: 60rpx;
+      .first-level-node-head {
+        display: flex;
+        align-items: center;
+        padding: 0 32rpx;
+        height: 50rpx;
+        .first-level-node-index {
+          font-size: 38rpx;
+          color: #75CEF1;
+          margin-right: 9rpx;
+        }
+        .first-level-node-name {
+          font-size: 36rpx;
+          color: #333333;
+          font-weight: 600;
+        }
+      }
+      .second-level-node {
+        width: 100%;
+        .second-level-node-head {
+          padding: 26rpx 32rpx 16rpx;
+          color: #999999;
+          font-size: 24rpx;
+        }
+        .third-level-node {
+          padding: 0 16rpx 0 32rpx;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          .third-level-node-item {
+            height: 72rpx;
+            width: 218rpx;
+            margin: 0 16rpx 16rpx 0;
+            border-radius: 6rpx;
+            background: #F7F7F7;
+            display: table;
+            padding: 0 24rpx;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            box-sizing: border-box;
+            text {
+              display: table-cell;
+              vertical-align: middle;
+              color: #333333;
+              font-size: 28rpx;
+            }
+          }
+        }
+      }
+    }
+  }
+}
