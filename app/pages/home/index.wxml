@@ -1,19 +1,17 @@
 <view class="HomePageBox">
-    <view class="recommendTreasureBox">
-        <view class="Txt">推荐宝物</view>
-        <view class="treasureListBox">
-            <view class="GoodsChoise"
-                  wx:for="{{treasureList}}"
-                  wx:key="index"
-                  bind:tap="jumpGoods"
-            >
-                <image src="https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png"></image>
-                <view>{{item.goodsname}}</view>
-            </view>
-        </view>
+  <view class="recommendTreasureBox">
+    <view class="Txt">推荐宝物</view>
+    <view class="treasureListBox">
+      <view class="GoodsChoise"
+            wx:for="{{treasureList}}"
+            wx:key="index"
+            data-url="/pages/home/guide/index"
+            bind:tap="navigateToHander"
+      >
+        <image src="https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png"></image>
+        <view>{{item.goodsname}}</view>
+      </view>
     </view>
-
-    <block wx:key="index">
-			<treasureLogList></treasureLogList>
-		</block>
+  </view>
+  <treasureLogList></treasureLogList>
 </view>

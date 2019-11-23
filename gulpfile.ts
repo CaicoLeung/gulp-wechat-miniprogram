@@ -1,8 +1,9 @@
-import { Options } from 'gulp-autoprefixer'
-import { readAppJson, writeAppJson } from './gulp/json'
 import * as path from 'path'
 import * as gulp from 'gulp'
+import * as autoPrefixer from 'gulp-autoprefixer'
+import { readAppJson, writeAppJson } from './gulp/json'
 
+// const eslint       = require('gulp-eslint')
 // const babel        = require('gulp-babel');
 import sassParse = require('gulp-sass')
 import imagemin = require('gulp-imagemin')
@@ -10,8 +11,6 @@ import imagemin = require('gulp-imagemin')
 // const cssnano      = require('cssnano');
 import sourcemaps = require('gulp-sourcemaps')
 import ts = require('gulp-typescript')
-// const eslint       = require('gulp-eslint')
-import autoprefixer = require('gulp-autoprefixer')
 // const concat       = require('gulp-concat');
 // const uglify       = require('gulp-uglify');
 import rename = require('gulp-rename')
@@ -32,8 +31,8 @@ const imgFiles = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
 const tsProject = ts.createProject('tsconfig.json')
 const root = path.join(__dirname, 'app/pages')
 const componentPath = path.join(__dirname, 'app/components')
-const _templateSource = `${appPath}/_template`
-const _componentSource = `${appPath}/_component`
+const templateSource = `${appPath}/_template`
+const componentSource = `${appPath}/_component`
 
 const clean = async () => {
   const deletePaths = await del('dist/**')
@@ -76,7 +75,7 @@ const json = () => {
 gulp.task(json)
 
 const sass = () => {
-  const autoprefixerOptions: Options = {
+  const autoprefixerOptions: autoPrefixer.Options = {
     browsers: ['last 2 versions'],
     cascade: true,
     remove: true
@@ -84,7 +83,7 @@ const sass = () => {
   return gulp.src(sassFiles)
     .pipe(sourcemaps.init())
     .pipe(sassParse({ outputStyle: 'compressed' }).on('error', sassParse.logError))
-    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(autoPrefixer(autoprefixerOptions))
     .pipe(rename({
       extname: '.wxss'
     }))
@@ -114,7 +113,7 @@ gulp.task('watch', () => {
   gulp.watch(wxmlFiles, wxml)
 })
 
-const argv = yargs.argv
+const { argv } = yargs
 let target: string | unknown
 let createPath = ''
 let createTemplate = ''
@@ -122,16 +121,16 @@ let createTemplate = ''
 const create = async () => {
   if (argv.page) {
     target = argv.page
-    createTemplate = _templateSource
+    createTemplate = templateSource
     createPath = root
     const appJson = await readAppJson()
-    if (appJson.hasOwnProperty('pages')) {
+    if (appJson.pages) {
       appJson.pages.push(`pages/${target}/index`)
       writeAppJson(appJson)
     }
   } else if (argv.component) {
     target = argv.component
-    createTemplate = _componentSource
+    createTemplate = componentSource
     createPath = componentPath
   }
   if (!target || !createPath) {

@@ -104,6 +104,7 @@
       "allowDestructuring": true,
       "allowedNames": ["self"]
     }],
-    "@typescript-eslint/triple-slash-reference": 0
+    "@typescript-eslint/triple-slash-reference": 0,
+    "import/no-extraneous-dependencies": 0
   }
 }
