@@ -1,3 +1,6 @@
 Page({
-  data: {}
+  data: {
+    maxtxt: 10,
+    titletxt: ''
+  }
 })

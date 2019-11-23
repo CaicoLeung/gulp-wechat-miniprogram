@@ -95,7 +95,7 @@ gulp.task(sass)
 
 const images = () => {
   return gulp.src(imgFiles, { since: gulp.lastRun(images) })
-    .pipe(imagemin())
+    // .pipe(imagemin())
     .pipe(gulp.dest(distPath))
 }
 gulp.task(images)
