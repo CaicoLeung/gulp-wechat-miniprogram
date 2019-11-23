@@ -6,8 +6,15 @@
           </view>
 
           <view class="input-box">
-              <input type="text" placeholder="填写宝物名称" placeholder-style="color:#999999;"></input>
-              <view>10</view>
+              <input  type="text"
+                      name="titleName"
+                      maxlength="{{maxtxt}}"
+                      bindinput="limitbtn"
+                      value="{{titletxt}}"
+                      placeholder="填写宝物名称"
+                      placeholder-style="color:#999999;"
+              ></input>
+              <view>{{maxtxt-titletxt.length}}</view>
           </view>
 
           <!-- <view class="treasure-type-box">
