@@ -17,38 +17,43 @@ Page({
     title: '',
     text: ''
   },
-  selectLocalPhotoHander (actionOption: IChooseSourceOption) {
+  selectLocalPhotoHander(actionOption: IChooseSourceOption) {
     const self = this
     wx.chooseImage({
       count: self.data.maximumImageCount - self.data.selectedSourceList.length,
       sizeType: ['original', 'compressed'],
       sourceType: actionOption.sourceType,
-      async success (res: WechatMiniprogram.ChooseImageSuccessCallbackResult) {
+      async success(res: WechatMiniprogram.ChooseImageSuccessCallbackResult) {
         wx.showLoading({ title: '处理中' })
         let count = 0
         const swiperCurrentIndex = self.data.selectedSourceList.length
-        let selectedSourceList: ISelectedSourceList = [].concat(self.data.selectedSourceList)
+        let selectedSourceList: ISelectedSourceList = [].concat(
+          self.data.selectedSourceList
+        )
 
-        async function Iterator () {
+        async function Iterator() {
           if (count < res.tempFilePaths.length) {
-            const result: ISelectedSourceItem = await WXGetImageInfoAsync(res.tempFilePaths[count])
+            const result: ISelectedSourceItem = await WXGetImageInfoAsync(
+              res.tempFilePaths[count]
+            )
             count++
             selectedSourceList = selectedSourceList.concat([result])
             await Iterator()
           }
         }
+
         await Iterator()
         self.preEditHander(selectedSourceList, swiperCurrentIndex)
       }
     })
   },
-  selectLocalViseoHander (chooseVideoOption: IChooseSourceOption) {
+  selectLocalViseoHander(chooseVideoOption: IChooseSourceOption) {
     const self = this
     wx.chooseVideo({
       maxDuration: 60,
       compressed: false,
       sourceType: chooseVideoOption.sourceType,
-      success (res: WechatMiniprogram.ChooseVideoSuccessCallbackResult) {
+      success(res: WechatMiniprogram.ChooseVideoSuccessCallbackResult) {
         const selectedSourceList: ISelectedSourceList = [
           {
             ...res,
@@ -61,8 +66,10 @@ Page({
       }
     })
   },
-  showActionSheet () {
-    const selectedImageSourceLength = this.data.selectedSourceList.filter((i: ISelectedSourceItem) => i.type === 'image').length
+  showActionSheet() {
+    const selectedImageSourceLength = this.data.selectedSourceList.filter(
+      (i: ISelectedSourceItem) => i.type === 'image'
+    ).length
     if (selectedImageSourceLength === this.data.maximumImageCount) {
       wx.showModal({
         title: '提示',
@@ -71,7 +78,9 @@ Page({
       })
       return
     }
-    const selectedVideoSourceLength = this.data.selectedSourceList.filter((i: ISelectedSourceItem) => i.type === 'video').length
+    const selectedVideoSourceLength = this.data.selectedSourceList.filter(
+      (i: ISelectedSourceItem) => i.type === 'video'
+    ).length
     if (selectedVideoSourceLength === this.data.maximumVideoCount) {
       wx.showModal({
         title: '提示',
@@ -80,8 +89,11 @@ Page({
       })
       return
     }
-    const actionSheetItemList = !this.data.selectedSourceList.length ? ['拍摄照片', '拍摄视频', '从手机相册选择照片', '从手机相册选择视频']
-      : selectedImageSourceLength ? ['拍摄照片', '从手机相册选择照片'] : ['拍摄视频', '从手机相册选择视频']
+    const actionSheetItemList = !this.data.selectedSourceList.length
+      ? ['拍摄照片', '拍摄视频', '从手机相册选择照片', '从手机相册选择视频']
+      : selectedImageSourceLength
+        ? ['拍摄照片', '从手机相册选择照片']
+        : ['拍摄视频', '从手机相册选择视频']
     this.setData({ actionSheetItemList })
     const actionOption: IChooseSourceOption = {
       sourceType: ['camera']
@@ -90,7 +102,7 @@ Page({
     wx.showActionSheet({
       itemList: this.data.actionSheetItemList,
       itemColor: '#333333',
-      success ({ tapIndex = 0 }) {
+      success({ tapIndex = 0 }) {
         if (actionSheetItemList[tapIndex] === '拍摄照片') {
           actionOption.sourceType = ['camera']
           selectLocalPhotoHander(actionOption)
@@ -107,17 +119,20 @@ Page({
       }
     })
   },
-  preEditHander (selectedSourceList: ISelectedSourceList, swiperCurrentIndex = 0) {
+  preEditHander(
+    selectedSourceList: ISelectedSourceList,
+    swiperCurrentIndex = 0
+  ) {
     const self = this
     wx.navigateTo({
       url: '/pages/publish/edit/index',
       events: {
-        getSelectedSourceListFromEdit (selectedSourceList: ISelectedSourceList) {
+        getSelectedSourceListFromEdit(selectedSourceList: ISelectedSourceList) {
           console.log('getSelectedSourceListFromEdit: ', selectedSourceList)
           self.setData({ selectedSourceList })
         }
       },
-      success (res) {
+      success(res) {
         res.eventChannel.emit('getSelectedSourceListFromMain', {
           selectedSourceList,
           swiperCurrentIndex
@@ -126,7 +141,7 @@ Page({
       }
     })
   },
-  gotoEditPage ({
+  gotoEditPage({
     currentTarget: {
       dataset = { swipercurrentindex: 0 }
     }
@@ -134,13 +149,17 @@ Page({
     const { swipercurrentindex } = dataset
     this.preEditHander(this.data.selectedSourceList, swipercurrentindex)
   },
-  titleInputHander ({
-    detail: { value = '' }
+  titleInputHander({
+    detail: {
+      value = ''
+    }
   }) {
     console.log(value)
-    this.setData({ title: value })
+    this.setData({
+      title: value
+    })
   },
-  textInputHander ({
+  textInputHander({
     detail: { value = '' }
   }) {
     this.setData({ text: value })
