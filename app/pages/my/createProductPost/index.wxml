@@ -13,6 +13,6 @@
           <!-- <view class="treasure-type-box">
 
           </view> -->
-          <view class="btn-box">确认修改</view>
+          <view class="btn-box">确认创建</view>
       </view>
 </view>
