@@ -3,18 +3,23 @@
   "root": true,
   "extends": [
     "standard",
+    "prettier",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "overrides": [
     {
       "files": ["*.js"],
+      "plugins": [
+        "prettier"
+      ],
       "parser": "babel-eslint"
     },
     {
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
       "plugins": [
+        "prettier",
         "@typescript-eslint"
       ]
     }
@@ -43,6 +48,7 @@
     "getApp": true
   },
   "rules": {
+    "prettier/prettier": 2,
     "curly": "off",
     "no-cond-assign": "error",
     "guard-for-in": "warn",
