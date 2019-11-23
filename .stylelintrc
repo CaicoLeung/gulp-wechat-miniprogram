@@ -6,7 +6,19 @@
   "rules": {
     "block-no-empty": true,
     "color-no-invalid-hex": true,
+    "function-calc-no-unspaced-operator": true,
     "max-empty-lines": 1,
-    "unit-no-unknown": null
+    "unit-no-unknown": null,
+    "keyframe-declaration-no-important": true,
+    "block-no-single-line": true,
+    "comment-no-empty": true,
+    "no-extra-semicolons": true,
+    "color-named": "always-where-possible",
+    "unit-whitelist": "rpx",
+    "color-hex-length": "long",
+    "color-hex-case": "upper",
+    "value-list-comma-space-before": "never",
+    "value-list-comma-space-after": "always",
+    "block-opening-brace-space-before": "always"
   }
 }

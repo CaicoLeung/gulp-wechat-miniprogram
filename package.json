@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "fix": "eslint --fix --ext .js,.ts app/",
+    "lint": "eslint --fix --ext .js,.ts app/",
+    "stylelint": "stylelint \"app/**.*.scss\" --fix --syntax",
     "test": "echo \"Error: 测试报错\" && exit 1"
   },
   "lint-staged": {
@@ -17,7 +18,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "post-commit": "echo \"提交完毕\""
+      "post-commit": "echo \"commit sucessfully!\""
     }
   },
   "author": "caico",
