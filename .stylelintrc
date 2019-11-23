@@ -10,15 +10,14 @@
     "max-empty-lines": 1,
     "unit-no-unknown": null,
     "keyframe-declaration-no-important": true,
-    "block-no-single-line": true,
     "comment-no-empty": true,
     "no-extra-semicolons": true,
-    "color-named": "always-where-possible",
-    "unit-whitelist": "rpx",
+    "color-named": "never",
     "color-hex-length": "long",
     "color-hex-case": "upper",
     "value-list-comma-space-before": "never",
     "value-list-comma-space-after": "always",
-    "block-opening-brace-space-before": "always"
+    "block-opening-brace-space-before": "always",
+    "selector-type-no-unknown": null
   }
 }

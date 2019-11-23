@@ -6,14 +6,14 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "lint": "eslint --fix --ext .js,.ts app/",
-    "stylelint": "stylelint \"app/**.*.scss\" --fix --syntax",
+    "lint": "eslint --fix --ext .js,.ts",
+    "stylelint": "stylelint --fix --syntax scss",
     "test": "echo \"Error: 测试报错\" && exit 1"
   },
   "lint-staged": {
     "app/**/*.{js,ts,scss,sass,less}": "git add",
     "app/**/*.{js,ts}": "eslint --fix --ext",
-    "app/**/*.{scss,sass,less}": "stylelint --fix --syntax"
+    "app/**/*.{scss,sass,less}": "stylelint --fix --syntax scss"
   },
   "husky": {
     "hooks": {

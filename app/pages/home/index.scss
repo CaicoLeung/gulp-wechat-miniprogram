@@ -1,27 +1,31 @@
-.HomePageBox{
-  .recommendTreasureBox{
-    .Txt{
-      font-size:36rpx;
-      font-weight:600;
-      margin:36rpx 0 24rpx 24rpx;
+.HomePageBox {
+  .recommendTreasureBox {
+    .Txt {
+      font-size: 36rpx;
+      font-weight: 600;
+      margin: 36rpx 0 24rpx 24rpx;
     }
-    .treasureListBox{
-      display:flex;
+
+    .treasureListBox {
+      display: flex;
       flex-wrap: wrap;
-      justify-content:space-between;
-      padding:0 20rpx;
-      .GoodsChoise{
+      justify-content: space-between;
+      padding: 0 20rpx;
+
+      .GoodsChoise {
         width: 169.5rpx;
         text-align: center;
-        margin-bottom:28rpx;
-        image{
-          width:120rpx;
-          height:120rpx;
-          border-radius:50%;
+        margin-bottom: 28rpx;
+
+        image {
+          width: 120rpx;
+          height: 120rpx;
+          border-radius: 50%;
         }
-        view{
-          color:#4A4A4A;
-          font-size:26rpx;
+
+        view {
+          color: #4A4A4A;
+          font-size: 26rpx;
         }
       }
 
