@@ -1,11 +1,9 @@
 Page({
-  data: {
-
-  },
-  onLoad () {
+  data: {},
+  onLoad() {
     console.log('onLoad')
   },
-  navigationBackHander () {
+  navigationBackHander() {
     wx.navigateBack()
   }
 })

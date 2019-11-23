@@ -1,16 +1,34 @@
 Page({
   data: {
     imgList: [
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png' },
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/freeBootBg.png' },
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png' },
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png' },
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png' },
-      { imgs: 'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png' }
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png'
+      },
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/freeBootBg.png'
+      },
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png'
+      },
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png'
+      },
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png'
+      },
+      {
+        imgs:
+          'https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg.png'
+      }
     ]
   },
   // 预览图片
-  previewImage ({
+  previewImage({
     currentTarget: {
       dataset = { url: '' }
     }

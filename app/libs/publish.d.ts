@@ -1,4 +1,7 @@
-type ISelectedSourceItem = (WechatMiniprogram.GetImageInfoSuccessCallbackResult | WechatMiniprogram.ChooseVideoSuccessCallbackResult) & {
+type ISelectedSourceItem = (
+  | WechatMiniprogram.GetImageInfoSuccessCallbackResult
+  | WechatMiniprogram.ChooseVideoSuccessCallbackResult
+) & {
   showActionSheet: boolean
   tag: string
   type: 'image' | 'video'

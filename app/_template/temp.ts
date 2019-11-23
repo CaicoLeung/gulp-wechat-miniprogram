@@ -1,11 +1,3 @@
 Page({
-  data: {
-
-  },
-  onLoad () {
-
-  },
-  onUnload () {
-
-  }
+  data: {}
 })

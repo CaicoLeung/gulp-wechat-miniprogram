@@ -13,7 +13,7 @@ export default Component({
     background: {
       type: String,
       value: 'rgba(255, 255, 255, 1)',
-      observer () {
+      observer() {
         this.setStyle()
       }
     },
@@ -66,11 +66,11 @@ export default Component({
     navBarExtendHeight: 0,
     isIOS: false
   },
-  attached () {
+  attached() {
     this.setStyle() // 设置样式
   },
   methods: {
-    setStyle () {
+    setStyle() {
       const {
         statusBarHeight,
         navBarHeight,
@@ -93,7 +93,10 @@ export default Component({
       ].join(';')
       let navBarLeft: string
       if ((back && !home) || (!back && home)) {
-        navBarLeft = [`width:${capsulePosition.width}px`, `height:${capsulePosition.height}px`].join(';')
+        navBarLeft = [
+          `width:${capsulePosition.width}px`,
+          `height:${capsulePosition.height}px`
+        ].join(';')
       } else if ((back && home) || title) {
         navBarLeft = [
           `width:${capsulePosition.width}px`,
@@ -113,16 +116,16 @@ export default Component({
       })
     },
     // 返回事件
-    back () {
+    back() {
       this.triggerEvent('back', { delta: this.data.delta })
     },
-    home () {
+    home() {
       this.triggerEvent('home', {})
     },
-    search () {
+    search() {
       this.triggerEvent('search', {})
     },
-    delete () {
+    delete() {
       this.triggerEvent('delete', {})
     }
   }

@@ -2,7 +2,7 @@ Page({
   data: {
     isInto: false
   },
-  onShow (): void {
+  onShow(): void {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 1
@@ -10,7 +10,7 @@ Page({
     }
     this.togglePage()
   },
-  togglePage () {
+  togglePage() {
     if (this.data.isInto) {
       wx.switchTab({
         url: '/pages/home/index'
