@@ -15,7 +15,7 @@
             bind:change="swiperChangeHander"
     >
       <swiper-item wx:for="{{selectedSourceList}}"
-                   wx:key="{{item.path}}"
+                   wx:key="id"
                    class="source-preview-item"
       >
         <!-- 上遮罩 -->
@@ -67,7 +67,7 @@
             <view class="actionSheet-list">
               <view class="actionSheet-item"
                     wx:for="{{tagList}}"
-                    wx:key="{{index}}"
+                    wx:key="id"
                     data-tag="{{item}}"
                     bind:tap="selectTagHander"
               >

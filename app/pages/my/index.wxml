@@ -1,37 +1,3 @@
 <view class="my-center-box">
-  <view class="user-center-box">
-    <image class="bg" src="https://lvcui-image.oss-cn-shanghai.aliyuncs.com/background/bg-circle.png"></image>
-    <view class="user-box">
-          <view class="userhead-box">
-            <view class="photo-box" hover-class="none" hover-stop-propagation="false">
-                <image src="/assets/img/icon/default-head.png"></image>
-            </view>
-            <view class="username">点击登录</view>
-          </view>
-          <view class="mytreasure">
-              我的宝物  0
-          </view>
-    </view>
-    <view class="title-txt">
-        <view class="titleName"
-              bind:tap="selectBtn"
-              wx:for="{{titleList}}"
-              data-index="{{index}}"
-              wx:key="{{idx}}"
-        >
-              <view class="txtname"
-                    style="{{selsectIndex == index && 'color:#333333;font-weight:600;'}}"
-              >{{item.txtname}}</view>
-              <text class="line" wx:if="{{selsectIndex == index}}"></text>
-        </view>
-    </view>
-    <view class="divider"></view>
-  </view>
-  <!-- <view class="detail-Box">
-    <image src="/assets/img/icon/no-detail-icon.png"></image>
-    <view>暂无动态</view>
-  </view>
-  <view class="send-icon">
-    <image src="/assets/img/icon/tip-red.png"></image>
-  </view> -->
+  <view>Page Content</view>
 </view>

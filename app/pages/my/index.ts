@@ -1,23 +1,9 @@
 Page({
-  data: {
-    titleList: [{ txtname: '动态' }, { txtname: '玩物日志' }],
-    selsectIndex: 0
-  },
-  selectBtn({
-    currentTarget: {
-      dataset = { index: 0 }
-    }
-  }) {
-    const { index } = dataset
-    this.setData({
-      selsectIndex: index
-    })
-  },
+  data: {},
   onShow(): void {
+    // 自定义Tabbar所需
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 2
-      })
+      this.getTabBar().setData({ selected: 2 })
     }
   }
 })

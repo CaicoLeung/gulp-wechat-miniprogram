@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "玩法指南",
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "navigation-bar": "/components/NavigationBar/index"
-  }
-}

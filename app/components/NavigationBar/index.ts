@@ -1,3 +1,5 @@
+import { black } from 'colors'
+
 const app = getApp<IAppOption>()
 
 export default Component({
@@ -39,7 +41,7 @@ export default Component({
     },
     back: {
       type: Boolean,
-      value: true
+      value: false
     },
     home: {
       type: Boolean,
@@ -51,7 +53,13 @@ export default Component({
     },
     iconTheme: {
       type: String,
-      value: 'black'
+      value: 'black',
+      observer(value: string) {
+        wx.setNavigationBarColor({
+          backgroundColor: this.data.background,
+          frontColor: value === 'white' ? '#ffffff' : '#000000'
+        })
+      }
     },
     delta: {
       type: Number,
@@ -68,6 +76,9 @@ export default Component({
   },
   attached() {
     this.setStyle() // 设置样式
+  },
+  lifetimes: {
+
   },
   methods: {
     setStyle() {
@@ -94,7 +105,7 @@ export default Component({
       let navBarLeft: string
       if ((back && !home) || (!back && home)) {
         navBarLeft = [
-          `width:${capsulePosition.width}px`,
+          // `width:${capsulePosition.width}px`,
           `height:${capsulePosition.height}px`
         ].join(';')
       } else if ((back && home) || title) {

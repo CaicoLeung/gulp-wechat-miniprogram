@@ -1,13 +1,11 @@
+@import "../assets/theme";
+
 .tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100rpx;
-  background: white;
+  height: $tabbarHeight;
+  background: #FFFFFF;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: env(safe-area-inset-bottom);
+  align-items: center;
+  padding-bottom: $safe-area-inset-bottom;
 }
 
 .tab-bar-border {
@@ -23,27 +21,54 @@
 
 .tab-bar-item {
   flex: 1;
-  height: 100rpx;
+  height: inherit;
   text-align: center;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  image {
-    width: 48rpx;
-    height: 48rpx;
+  align-items: flex-start;
+  align-content: flex-start;
+  box-sizing: border-box;
+  padding-top: 14rpx;
+  .tabbar-item-icon {
+    width: 44rpx;
+    height: 44rpx;
   }
   .tabbar-name {
-    margin-top: 6rpx;
+    width: 100%;
     font-size: 22rpx;
+    font-weight: normal;
+    line-height: 30rpx;
+    margin-top: 6rpx;
+    vertical-align: baseline;
+    &.selected-style {
+      color: #FF335F;
+      font-weight: 600;
+    }
   }
 }
 
 .tab-bar-item2 {
-
-  image {
-    width: 88rpx;
-    height: 88rpx;
+  padding-top: 8rpx;
+  .tabbar-item-icon {
+    width: 72rpx;
+    height: 72rpx;
     border-radius: 50%;
+  }
+}
+
+.tab-bar-item3 {
+  .tabbar-item-icon {
+    position: relative;
+    .red-dot {
+      width: 12rpx;
+      height: 12rpx;
+      border-radius: 50%;
+      background: #FD4571;
+      position: absolute;
+      right: -3rpx;
+      top: -3rpx;
+      z-index: 5;
+    }
   }
 }

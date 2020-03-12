@@ -22,15 +22,19 @@ Component({
         selectedIconPath: '/assets/img/tabbar/wode@2x.png',
         text: '我的'
       }
-    ]
+    ],
+    showRedDot: false
   },
   methods: {
     switchTab(e) {
+      const self = this
       const data = e.currentTarget.dataset
       const url = data.path
-      wx.switchTab({ url })
-      this.setData({
-        selected: data.index
+      wx.switchTab({
+        url,
+        success() {
+          self.setData({ selected: data.index })
+        }
       })
     }
   }

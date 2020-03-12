@@ -1,6 +1,12 @@
 /// <reference path="../../node_modules/miniprogram-api-typings/index.d.ts" />
 /// <reference path="./publish.d.ts" />
 
+interface IResponseType<T> {
+  code: number
+  msg: string
+  obj: T
+}
+
 interface IAppOption {
   globalData: {
     userInfo?: WechatMiniprogram.UserInfo | {}

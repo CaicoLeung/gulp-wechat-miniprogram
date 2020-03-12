@@ -4,46 +4,17 @@ const app = getApp<IAppOption>()
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    treasureList: [
-      { categoryName: '翡翠' },
-      { categoryName: '和田玉' },
-      { categoryName: '玛瑙' },
-      { categoryName: '南红' },
-      { categoryName: '宝典' },
-      { categoryName: '钻石' },
-      { categoryName: '黄金' },
-      { categoryName: '书画' }
-    ]
+    userInfo: {}
   },
-  onLoad() {
-    console.log(111)
+  onLoad(query: Record<string, string | undefined>) {
+    console.log('page参数: ', query)
   },
   onShow(): void {
+    // 自定义Tabbar所需
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
         selected: 0
       })
     }
-  },
-  getUserInfo({
-    detail = {
-      userInfo: {}
-    }
-  }) {
-    app.globalData.userInfo = detail.userInfo
-    this.setData({
-      userInfo: detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  navigateToHander({
-    currentTarget: {
-      dataset = { url: '' }
-    }
-  }) {
-    const { url } = dataset
-    wx.navigateTo({ url })
   }
 })

@@ -1,13 +1,13 @@
 {
-  "name": "glup-template",
+  "name": "wechat-miniprogram-template",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "app.ts",
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
     "lint": "eslint --fix --ext .js,.ts app/",
-    "stylelint": "stylelint --fix --syntax scss",
+    "stylelint": "stylelint --fix --syntax scss app/**/*.scss",
     "test": "echo \"Error: 测试报错\" && exit 1"
   },
   "lint-staged": {
@@ -55,7 +55,7 @@
     "husky": "^2.4.1",
     "jshint": "^2.10.3",
     "lint-staged": "^9.4.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "stylelint": "^12.0.0",
     "stylelint-config-prettier": "^6.0.0",

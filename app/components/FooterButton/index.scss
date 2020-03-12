@@ -1,3 +1,5 @@
+@import "../../assets/theme";
+
 .publish-main-container {
   position: fixed;
   width: 100%;
@@ -7,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: $safe-area-inset-bottom;
 
   .publish-main-button {
     width: 92%;
@@ -18,7 +21,7 @@
     text {
       display: table-cell;
       vertical-align: middle;
-      color: #FFF;
+      color: #FFFFFF;
       font-size: 32rpx;
       font-weight: 600;
     }

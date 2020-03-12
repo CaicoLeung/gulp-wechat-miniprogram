@@ -8,8 +8,20 @@
     "color-no-invalid-hex": true,
     "function-calc-no-unspaced-operator": true,
     "max-empty-lines": 1,
-    "unit-no-unknown": null,
-    "keyframe-declaration-no-important": true,
+    "unit-no-unknown": [
+      true,
+      {
+        "ignoreUnits": ["rpx"]
+      }
+    ],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignore": ["custom-elements"],
+        "ignoreTypes": ["page", "text", "view", "swiper", "swiper-item"]
+      }
+    ],
+    "keyframe-declaration-no-important": null,
     "comment-no-empty": true,
     "no-extra-semicolons": true,
     "color-named": "never",
@@ -17,7 +29,10 @@
     "color-hex-case": "upper",
     "value-list-comma-space-before": "never",
     "value-list-comma-space-after": "always",
+    "selector-combinator-space-after": "always",
     "block-opening-brace-space-before": "always",
-    "selector-type-no-unknown": null
+    "declaration-colon-space-after": "always",
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": null
   }
 }
