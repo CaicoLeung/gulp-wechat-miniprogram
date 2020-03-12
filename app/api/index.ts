@@ -1,4 +1,4 @@
-import httpRequest from '../utils/index'
+import httpRequest from '../utils/wxRequest'
 import config from '../config/index'
 
 class API {

@@ -10,6 +10,7 @@
 6. 支持图片压缩
 7. 支持命令行创建page和component目录和(包括wxml, ts, wxss, json文件)
 8. 支持热更新
+9. 支持ES6语法, async, await等等
 
 ## 开始使用
 1. 确保已全局安装gulp
@@ -20,7 +21,7 @@
   ```
   $ git clone git@github.com:CaicoLeung/gulp-wechat-miniprogram.git
   ```
-3. 进度目录, 并安装依赖
+3. 进入目录, 并安装依赖
 
   ```
   $ cd gulp-wechat-miniprogram && npm install

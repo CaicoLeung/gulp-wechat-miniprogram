@@ -1,7 +1,7 @@
 // 获取应用实例
 const app = getApp<IAppOption>()
 
-Page({
+export default Page({
   data: {
     motto: 'Hello World',
     userInfo: {}

@@ -1,7 +1,7 @@
 
 const app = getApp<IAppOption>()
 
-Component({
+export default Component({
   properties: {
     disabled: {
       type: Boolean,

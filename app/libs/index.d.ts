@@ -1,6 +1,8 @@
 /// <reference path="../../node_modules/miniprogram-api-typings/index.d.ts" />
 /// <reference path="./publish.d.ts" />
 
+type IWechatRequestMethods = 'OPTIONS' | 'GET' | 'HEAD' | 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT'
+
 interface IResponseType<T> {
   code: number
   msg: string
@@ -9,7 +11,7 @@ interface IResponseType<T> {
 
 interface IAppOption {
   globalData: {
-    userInfo?: WechatMiniprogram.UserInfo | {
+    userInfo?: {
       is_updated: boolean
     }
     globalSystemInfo?: {

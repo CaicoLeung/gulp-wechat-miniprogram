@@ -19,15 +19,16 @@ import colors = require('colors')
 import yargs = require('yargs')
 
 const appPath = 'app/**'
-const whitelist: string[] = [`!${appPath}/_template/*`, `!${appPath}/_component/*`, `!${appPath}/vant/*`]
+const whitelist: string[] = [`!${appPath}/_template/**/*`, `!${appPath}/_component/**/*`, `!${appPath}/modules/**/*`, `!${appPath}/services/**/*`]
 const distPath = 'dist'
-const wxssFiles = [`${appPath}/*.wxss`]
+const wxssFiles = [`${appPath}/*.wxss`, ...whitelist.map(s => `${s}.wxss`)]
 const jsFiles = [`${appPath}/*.js`, `${appPath}/*.wxs`]
-const wxmlFiles = [`${appPath}/*.wxml`, ...whitelist.map(s => s + '.wxml')]
-const sassFiles = [`${appPath}/*.+(sass|scss)`, `!${appPath}/assets/css/*.+(sass|scss)`, ...whitelist.map(s => s + '.(sass|scss)')]
-const jsonFiles = [`${appPath}/*.json`, ...whitelist.map(s => s + '.json')]
-const tsFiles = [`${appPath}/*.ts`, `!${appPath}/_template/*ts`, `!${appPath}/_component/*ts`, `!${appPath}/*.d.ts`]
+const wxmlFiles = [`${appPath}/*.wxml`, ...whitelist.map(s => `${s}.wxml`)]
+const sassFiles = [`${appPath}/*.+(sass|scss)`, ...whitelist.map(s => `${s}.+(sass|scss)`)]
+const jsonFiles = [`${appPath}/*.json`, ...whitelist.map(s => `${s}.json`)]
+const tsFiles = [`${appPath}/*.ts`, ...whitelist.map(s => `${s}.ts`), `!${appPath}/*.d.ts`]
 const imgFiles = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
+const wxsFiles = [`${appPath}/modules/*.ts`]
 const tsProject = ts.createProject('tsconfig.json')
 const root = path.join(__dirname, 'app/pages')
 const componentPath = path.join(__dirname, 'app/components')
@@ -36,7 +37,7 @@ const componentSource = `${appPath}/_component`
 
 const clean = async () => {
   const deletePaths = await del('dist/**')
-  console.log(colors.red('以下的文件和目录被删除:\n') + colors.yellow(deletePaths.join('\n')))
+  // console.log(colors.red('以下的文件和目录被删除:\n') + colors.yellow(deletePaths.join('\n')))
 }
 gulp.task(clean)
 
@@ -67,6 +68,16 @@ const typescript = () => {
     .pipe(gulp.dest(distPath))
 }
 gulp.task(typescript)
+
+const wxs = () => {
+  return gulp.src(wxsFiles, { since: gulp.lastRun(wxs) })
+    .pipe(ts()).js
+    .pipe(rename({
+      extname: '.wxs'
+    }))
+    .pipe(gulp.dest(distPath))
+}
+gulp.task(wxs)
 
 const json = () => {
   return gulp.src(jsonFiles, { since: gulp.lastRun(json) })
@@ -100,7 +111,7 @@ const images = () => {
 gulp.task(images)
 
 // parallel
-gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxss', 'js', 'wxml', 'typescript', 'json', 'sass')))
+gulp.task('build', gulp.series('clean', gulp.parallel('images', 'wxss', 'js', 'wxml', 'wxs', 'typescript', 'json', 'sass')))
 
 // watch
 gulp.task('watch', () => {
@@ -108,6 +119,7 @@ gulp.task('watch', () => {
   gulp.watch(wxssFiles, wxss)
   gulp.watch(jsFiles, js)
   gulp.watch(sassFiles, sass)
+  gulp.watch(wxsFiles, wxs)
   gulp.watch(tsFiles, typescript)
   gulp.watch(jsonFiles, json)
   gulp.watch(wxmlFiles, wxml)

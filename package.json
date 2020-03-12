@@ -79,7 +79,7 @@
     "gulp-typescript": "^5.0.1",
     "gulpclass": "^0.2.0",
     "jsonfile": "^5.0.0",
-    "miniprogram-api-typings": "^2.9.2",
+    "miniprogram-api-typings": "^2.10.2",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2",
     "yargs": "^13.3.0"
