@@ -1,7 +1,11 @@
 /// <reference path="./libs/index.d.ts" />
 
 App<IAppOption>({
-  globalData: {},
+  globalData: {
+    userInfo: {
+      is_updated: false
+    }
+  },
   onLaunch() {
     this.getSystemInfoHander()
     this.WXLoginHander()

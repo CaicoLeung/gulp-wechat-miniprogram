@@ -9,7 +9,9 @@ interface IResponseType<T> {
 
 interface IAppOption {
   globalData: {
-    userInfo?: WechatMiniprogram.UserInfo | {}
+    userInfo?: WechatMiniprogram.UserInfo | {
+      is_updated: boolean
+    }
     globalSystemInfo?: {
       navBarHeight: number
       capsulePosition: WechatMiniprogram.Rect
