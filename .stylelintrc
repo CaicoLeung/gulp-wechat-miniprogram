@@ -7,11 +7,13 @@
     "block-no-empty": true,
     "color-no-invalid-hex": true,
     "function-calc-no-unspaced-operator": true,
-    "max-empty-lines": 1,
+    "max-empty-lines":[1, {
+      "ignore": ["comments"]
+    }],
     "unit-no-unknown": [
       true,
       {
-        "ignoreUnits": ["rpx"]
+        "ignoreUnits": ["/rpx/"]
       }
     ],
     "selector-type-no-unknown": [
@@ -33,6 +35,12 @@
     "block-opening-brace-space-before": "always",
     "declaration-colon-space-after": "always",
     "no-descending-specificity": null,
-    "at-rule-no-unknown": null
+    "at-rule-no-unknown": null,
+    "length-zero-no-unit": true,
+    "comment-empty-line-before": ["never", {
+      "except": ["first-nested"],
+      "ignore": ["after-comment", "stylelint-commands"]
+    }],
+    "declaration-empty-line-before": "never"
   }
 }

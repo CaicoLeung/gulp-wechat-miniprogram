@@ -1,8 +1,7 @@
 page {
-  --height: 44px; /* 4*2+32 */
-  --right: 97px; /* 10+87 */
+  --height: 44px;
+  --right: 97px;
   --navBarExtendHeight: 4px;
-
   box-sizing: border-box;
 }
 .lxy-nav-bar {
@@ -24,21 +23,18 @@ page {
   --height: 44px; /* 4*2+32 */
   --right: 97px; /* 10+87 */
   --navBarExtendHeight: 4px;
-
   box-sizing: border-box;
 }
 .lxy-nav-bar .android {
   --height: 48px; /* 8*2+32 */
   --right: 96px; /* 10+87 */
   --navBarExtendHeight: 4px;
-
   box-sizing: border-box;
 }
 .lxy-nav-bar .devtools {
   --height: 42px; /* 5*2+32 */
   --right: 88px; /* 10+87 */
   --navBarExtendHeight: 4px;
-
   box-sizing: border-box;
 }
 .lxy-nav-bar__inner {
@@ -58,7 +54,6 @@ page {
   padding: 0 10px;
   //width: var(--right);
   height: 32px;
-
   /*  padding-left: 10px; */
   display: flex;
   align-items: center;
@@ -94,7 +89,6 @@ page {
   background-position: center center;
   background-size: 1em 2em;
 }
-
 .lxy-nav-bar__inner .lxy-nav-bar__left .lxy-nav-bar__btn_goback:active,
 .lxy-nav-bar__inner .lxy-nav-bar__left .lxy-nav-bar__btn_gohome:active {
   opacity: 0.5;
@@ -144,7 +138,6 @@ page {
   position: relative;
   z-index: 50;
 }
-
 .lxy-nav-bar-search {
   width: 100%;
   height: 32px;
@@ -158,7 +151,6 @@ page {
     background: rgba(255, 255, 255, 0.3);
   }
 }
-
 .lxy-nav-bar-search__input {
   height: 100%;
   display: flex;

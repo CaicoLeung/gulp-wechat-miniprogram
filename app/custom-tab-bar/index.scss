@@ -1,5 +1,4 @@
 @import "../assets/theme";
-
 .tab-bar {
   height: $tabbarHeight;
   background: #FFFFFF;
@@ -7,7 +6,6 @@
   align-items: center;
   padding-bottom: $safe-area-inset-bottom;
 }
-
 .tab-bar-border {
   background-color: rgba(0, 0, 0, 0.33);
   position: absolute;
@@ -18,7 +16,6 @@
   transform: scaleY(0.5);
   box-shadow: 0 -4rpx 6rpx 0 rgba(0,0,0,0.03);
 }
-
 .tab-bar-item {
   flex: 1;
   height: inherit;
@@ -47,7 +44,6 @@
     }
   }
 }
-
 .tab-bar-item2 {
   padding-top: 8rpx;
   .tabbar-item-icon {
@@ -56,7 +52,6 @@
     border-radius: 50%;
   }
 }
-
 .tab-bar-item3 {
   .tabbar-item-icon {
     position: relative;
