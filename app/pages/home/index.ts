@@ -3,7 +3,7 @@ const app = getApp<IAppOption>()
 
 export default Page({
   data: {
-    motto: 'Hello World',
+    motto: 'Hello CaicoLeung!',
     userInfo: {}
   },
   onLoad(query: Record<string, string | undefined>) {

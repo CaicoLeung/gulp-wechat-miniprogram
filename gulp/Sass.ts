@@ -1,30 +1,29 @@
+const gulpSass = require('gulp-sass')
+import { distPath, sassFiles } from './SourcePath'
+const gulpStylelint = require('gulp-stylelint')
 import gulp from 'gulp'
 import rename from 'gulp-rename'
-import sassParse = require('gulp-sass')
-import sourcemaps = require('gulp-sourcemaps')
-import { sassFiles } from './SourcePath'
 
-const gulpStylelint  = require('gulp-stylelint')
+gulpSass.compiler = require('node-sass')
 
 const sassParser = () => {
   return gulp.src(sassFiles)
-    .pipe(sourcemaps.init())
-    .pipe(sassParse({
-      errLogToConsole: true,
-      sync: true
-    }))
-    .pipe(sourcemaps.write())
+    .pipe(gulpSass({
+      sourceMap: true,
+      outputStyle: 'compressed'
+    }).on('error', gulpSass.logError))
     .pipe(gulpStylelint({
       debug: true,
-      fix: false,
+      fix: true,
       failAfterError: false,
       reporters: [
-        {formatter: 'verbose', console: true}
+        { formatter: 'string', console: true }
       ]
     }))
     .pipe(rename({
       extname: '.wxss'
     }))
+    .pipe(gulp.dest(distPath))
 }
 
 exports.sassParser = sassParser
