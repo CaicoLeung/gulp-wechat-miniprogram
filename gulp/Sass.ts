@@ -1,9 +1,9 @@
-const gulpSass = require('gulp-sass')
 import { distPath, sassFiles } from './SourcePath'
-const gulpStylelint = require('gulp-stylelint')
-const sourcemaps = require('gulp-sourcemaps');
 import gulp from 'gulp'
 import rename from 'gulp-rename'
+const gulpSass = require('gulp-sass')
+const gulpStylelint = require('gulp-stylelint')
+const sourcemaps = require('gulp-sourcemaps')
 
 gulpSass.compiler = require('node-sass')
 

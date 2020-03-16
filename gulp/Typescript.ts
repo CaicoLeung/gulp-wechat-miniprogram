@@ -1,10 +1,10 @@
 import { distPath, tsFiles } from './SourcePath'
-import gulp from 'gulp'
 import colors from 'colors'
+import gulp from 'gulp'
+import gulpTypescript = require('gulp-typescript')
 import sourcemaps = require('gulp-sourcemaps')
 const eslint = require('gulp-eslint')
 const babel = require('gulp-babel');
-import gulpTypescript = require('gulp-typescript')
 
 const tsConfig = gulpTypescript.createProject('tsconfig.json')
 

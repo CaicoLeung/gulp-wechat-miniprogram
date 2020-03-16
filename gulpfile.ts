@@ -1,10 +1,10 @@
 import * as gulp from 'gulp'
-import { imgFiles, jsFiles, jsonFiles, sassFiles, tsFiles, wxsFiles, wxssFiles, wxmlFiles } from './gulp/SourcePath'
+import { imgFiles, jsFiles, jsonFiles, sassFiles, tsFiles, wxmlFiles, wxsFiles, wxssFiles } from './gulp/SourcePath'
 const { sassParser } = require('./gulp/Sass')
 const { cleanDistDir } = require('./gulp/Clean')
 const { imagesCopy, jsCopy, jsonCopy, wxmlCopy, wxsCopy, wxssCopy } = require('./gulp/Copy')
 const { tsParser } = require('./gulp/Typescript')
-const { argsHandle } = require('./gulp/ArgsHandle')
+const { create } = require('./gulp/ArgsHandle')
 
 // const postcss      = require('gulp-postcss');
 // const cssnano      = require('cssnano');
@@ -20,7 +20,7 @@ gulp.task(jsonCopy)
 gulp.task(imagesCopy)
 gulp.task(tsParser)
 gulp.task(sassParser)
-gulp.task(argsHandle)
+gulp.task(create)
 
 // parallel
 gulp.task(

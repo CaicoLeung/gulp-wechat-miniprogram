@@ -1,5 +1,5 @@
+import { distPath, imgFiles, jsFiles, jsonFiles, wxmlFiles, wxsFiles, wxssFiles } from './SourcePath'
 import gulp from 'gulp'
-import { distPath, imgFiles, jsFiles, jsonFiles, wxsFiles, wxssFiles, wxmlFiles } from './SourcePath'
 import gulpTypescript from 'gulp-typescript'
 import rename from 'gulp-rename'
 // import imagemin from 'gulp-imagemin'

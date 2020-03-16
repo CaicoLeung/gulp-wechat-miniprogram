@@ -1,5 +1,5 @@
+import { componentPath, componentSource, rootPath, templateSource } from './SourcePath'
 import { readAppJson, writeAppJson } from './PageJson'
-import { componentPath, componentSource, templateSource, rootPath } from './SourcePath'
 import gulp from 'gulp'
 import path from 'path'
 import rename from 'gulp-rename'
@@ -10,7 +10,7 @@ let target: string | unknown
 let createPath = ''
 let createTemplate = ''
 
-const argsHandle = async () => {
+const create = async () => {
   if (argv.page) {
     target = argv.page
     createTemplate = templateSource
@@ -36,4 +36,4 @@ const argsHandle = async () => {
     .pipe(gulp.dest(path.join(createPath)))
 }
 
-exports.argsHandle = argsHandle
+exports.create = create
