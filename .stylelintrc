@@ -45,6 +45,9 @@
       "ignore": ["after-comment", "stylelint-commands"]
     }],
     "declaration-empty-line-before": "never",
-    "selector-pseudo-element-colon-notation": "single"
+    "selector-pseudo-element-colon-notation": "single",
+    "no-duplicate-selectors": [true, {
+      "disallowInList": false
+    }]
   }
 }
