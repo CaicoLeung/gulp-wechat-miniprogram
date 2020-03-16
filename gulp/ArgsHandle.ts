@@ -1,7 +1,7 @@
 import { readAppJson, writeAppJson } from './PageJson'
 import { componentPath, componentSource, templateSource, rootPath } from './SourcePath'
 import gulp from 'gulp'
-import path from "path"
+import path from 'path'
 import rename from 'gulp-rename'
 import yargs from 'yargs'
 

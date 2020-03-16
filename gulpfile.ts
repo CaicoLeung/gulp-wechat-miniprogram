@@ -1,8 +1,8 @@
 import * as gulp from 'gulp'
+import { imgFiles, jsFiles, jsonFiles, sassFiles, tsFiles, wxsFiles, wxssFiles, wxmlFiles } from './gulp/SourcePath'
 const { sassParser } = require('./gulp/Sass')
 const { cleanDistDir } = require('./gulp/Clean')
 const { imagesCopy, jsCopy, jsonCopy, wxmlCopy, wxsCopy, wxssCopy } = require('./gulp/Copy')
-import { imgFiles, jsFiles, jsonFiles, sassFiles, tsFiles, wxsFiles, wxssFiles, wxmlFiles } from './gulp/SourcePath'
 const { tsParser } = require('./gulp/Typescript')
 const { argsHandle } = require('./gulp/ArgsHandle')
 
