@@ -11,7 +11,7 @@ export const jsonFiles = [`${appPath}/*.json`, ...whitelist.map(s => `${s}.json`
 export const tsFiles = [`${appPath}/*.ts`, ...whitelist.map(s => `${s}.ts`), `!${appPath}/*.d.ts`]
 export const imgFiles = [`${appPath}/assets/img/**/*.{png, jpg, gif, ico}`]
 export const wxsFiles = [`${appPath}/modules/*.ts`]
-export const rootPath = path.join(__dirname, 'app/pages')
-export const componentPath = path.join(__dirname, 'app/components')
-export const templateSource = `${appPath}/_template`
-export const componentSource = `${appPath}/_component`
+export const rootPath = path.join(__dirname, '../app/pages')
+export const componentPath = path.join(__dirname, '../app/components')
+export const templateSource = path.join(__dirname, `../app/_template`)
+export const componentSource = path.join(__dirname, `../app/_component`)
