@@ -1,10 +1,11 @@
 # gulp-wechat-miniprogram
 
-基于gulp构建的微信小程序开发模板
+基于gulp构建的微信小程序开发流
 
 ## 特性
 
-- [x] 支持所有原生语法特效
+- [x] 支持所有原生语法特性
+- [x] 支持小程序npm
 - [x] 支持Typescript(引入miniprogram-api-typings小程序声明文件)
 - [x] 支持Scss, Sass
 - [x] 支持样式补全
@@ -16,7 +17,7 @@
 ## 目标
 
 - [ ] 监听文件删除
-- [ ] alias路径别名(@page, @com, @utils, @config...)
+- [ ] 路径alias别名(@page, @com, @utils, @config...)
 - [ ] cli脚手架
 
 ## 开始使用
@@ -99,3 +100,15 @@
         }
       }
       ```
+
+## 说明
+
+- wxs模块
+  > 在app/modules目录内的ts文件将编译成.wxs模块, 模块规范使用CommonJS标准(即使用module.exports导出), 在wxml内直接引用模块
+
+  ```html
+    <wxs src="./modules/tools.wxs" module="tools" />
+  ```
+
+- template模板
+  > 虽然不受限, 但建议放置在app/templates目录内
