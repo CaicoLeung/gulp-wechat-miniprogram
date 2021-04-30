@@ -21,7 +21,6 @@ export const WXLogin = (): Promise<string> => {
   return new Promise((resolve, reject) => {
     wx.login({
       success(res: WechatMiniprogram.LoginSuccessCallbackResult) {
-        console.log(res.code)
         resolve(res.code)
       },
       fail(error) {
@@ -113,45 +112,17 @@ export const generateRandomCode = (length: number): string => {
   const strElelmentArr = str.split('')
   let result: string[] = []
   for (let i = 0; i < length; i++) {
-    result = result.concat(strElelmentArr[parseInt((Math.random() * strElelmentArr.length).toFixed(0))])
+    result = result.concat(strElelmentArr[parseInt((Math.random() * strElelmentArr.length).toFixed(0), 10)])
   }
   return result.join('')
 }
 // 获取当前月份有多少天数
-const getTotalDaysByMonth = (year: number, month: number): number => {
+export const getTotalDaysByMonth = (year: number, month: number): number => {
   return new Date(year, month + 1, 0).getDate()
 }
 // 获取当前月份1号是星期几
-const getDayByMonth = (year: number, month: number): number => {
+export const getDayByMonth = (year: number, month: number): number => {
   return new Date(year, month, 1).getDay()
-}
-// 初始化日历
-export const initCalendar = (year: number, month: number, calendarMixin: Array<{
-  cover: string
-  date: number
-  url_oss: string
-}> = [], updated = false) => {
-  const firstDay = getDayByMonth(year, month)
-  const days = getTotalDaysByMonth(year, month)
-  const initCalendarData = new Array(6 * 7).fill({ date: 0 })
-  const initInsertCalendarData = []
-  for (let i = 0; i < days; i++) {
-    const item = calendarMixin.find(item => item.date === i + 1)
-    initInsertCalendarData.push(Object.assign({ date: i + 1 }, item))
-  }
-  // 如果后七天都是空, 则删掉
-  if (initCalendarData.slice(35, 42).every((item: { date: number }) => !item.date)) {
-    initCalendarData.splice(35, 7)
-  }
-  initCalendarData.splice(firstDay, days, ...initInsertCalendarData)
-  return {
-    date: {
-      year: new Date(year, month + 1, 0).getFullYear(),
-      month: new Date(year, month + 1, 0).getMonth()
-    },
-    updated,
-    initCalendarData
-  }
 }
 
 // 计算间隔月数
@@ -166,30 +137,6 @@ export const setIntervalMonthHandler = (currentCalendarSwiperDate: Date, create_
   console.log(`和最低可达时间(用户注册时间)间隔: ${intervalCreateMonth}; 和最高可达时间(当前时间)间隔: ${intervalNewMonth}`)
   // 日历切换拦截
   return { intervalCreateMonth, intervalNewMonth }
-}
-
-// 初始化日历
-export const initCalendarHandler = async (create_time: { year: number, month: number }, getCalendarListHandler: (year: number, month: number) => Promise<Array<{
-  cover: string
-  date: number
-  url_oss: string
-}>>) => {
-  // 初始化日历
-  const MonthDays = 30 * 24 * 60 * 60 * 1000
-  const userCreateDate = new Date(create_time.year, create_time.month - 1, 0)
-  const date = new Date()
-  const currentYear = date.getFullYear()
-  const currentMonth = date.getMonth()
-  // 当前月份和用户注册月份间隔, 向上取整
-  const intervalCreateMonth = Math.abs(Math.ceil((date.valueOf() - userCreateDate.valueOf()) / MonthDays))
-  console.log(`用户已注册${intervalCreateMonth}月`)
-  const calendarList = []
-  for (let i = 0; i < intervalCreateMonth; i++) {
-    const currentItemDate = new Date(currentYear, currentMonth - i)
-    calendarList.push(initCalendar(currentItemDate.getFullYear(), currentItemDate.getMonth()))
-  }
-  calendarList[0] = initCalendar(currentYear, currentMonth, await getCalendarListHandler(currentYear, currentMonth + 1), true)
-  return { calendarList: calendarList.reverse() }
 }
 
 // 获取节点的Node信息

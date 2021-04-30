@@ -6,10 +6,10 @@ const appJson = path.join(__dirname, `../${appPath}/app.json`)
 
 export const readAppJson = async () => {
   console.log('appJson: ', appJson)
-  return await readFile(appJson)
+  return readFile(appJson)
 }
 
-export const writeAppJson = (result: object) => {
+export const writeAppJson = (result: unknown) => {
   writeFile(appJson, result, { spaces: 2 }, (err) => {
     if (err) console.error(err)
   })

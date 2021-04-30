@@ -12,15 +12,15 @@ export default <T = unknown>(url: string, method: IWechatRequestMethods, data: s
       data,
       success(res: WechatMiniprogram.RequestSuccessCallbackResult) {
         console.warn('[HTTP状态码]: ', res.statusCode)
-        const data = res.data as IResponseType<T>
-        if (data.code === 200) {
-          resolve(data)
+        const result = res.data as IResponseType<T>
+        if (result.code === 200) {
+          resolve(result)
         } else {
           wx.showToast({
-            title: data.msg,
+            title: result.msg,
             icon: 'none'
           })
-          reject(data.msg)
+          reject(result.msg)
         }
       },
       fail(error: WechatMiniprogram.GeneralCallbackResult) {

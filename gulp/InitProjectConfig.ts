@@ -33,6 +33,6 @@ export async function initProjectConfig() {
       appid: originConfig?.appid,
       projectname: originConfig?.projectname
     }
-    writeProjectConfig(finallyConfig)
+    await writeProjectConfig(finallyConfig)
   }
 }

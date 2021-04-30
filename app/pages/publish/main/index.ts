@@ -133,8 +133,8 @@ Page({
     wx.navigateTo({
       url: '/pages/publish/edit/index',
       events: {
-        getSelectedSourceListFromEdit(selectedSourceList: ISelectedSourceList) {
-          console.log('getSelectedSourceListFromEdit: ', selectedSourceList)
+        getSelectedSourceListFromEdit(source: ISelectedSourceList) {
+          console.log('getSelectedSourceListFromEdit: ', source)
           self.setData({ selectedSourceList })
         }
       },
