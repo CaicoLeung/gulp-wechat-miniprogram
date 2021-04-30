@@ -13,9 +13,5 @@ Page({
         selected: 0
       })
     }
-  },
-  test() {
-    const a = 1111111
-    console.log(a)
   }
 })
