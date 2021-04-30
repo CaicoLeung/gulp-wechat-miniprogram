@@ -8,17 +8,16 @@ import sourcemaps from 'gulp-sourcemaps'
 
 export const sassParser = () => {
   return gulp.src(sassFiles)
-    .pipe(sourcemaps.init())
-    .pipe(gulpSass({ outputStyle: 'compressed' }).on('error', gulpSass.logError))
-    .pipe(sourcemaps.write())
     .pipe(gulpStylelint({
-      debug: true,
       fix: true,
       failAfterError: true,
       reporters: [
-        { formatter: 'string', console: true }
+        { formatter: 'verbose', console: true }
       ]
     }))
+    .pipe(sourcemaps.init())
+    .pipe(gulpSass({ outputStyle: 'expanded' }).on('error', gulpSass.logError))
+    .pipe(sourcemaps.write())
     .pipe(rename({
       extname: '.wxss'
     }))
