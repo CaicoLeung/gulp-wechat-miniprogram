@@ -18,7 +18,7 @@
 
 - [ ] 监听文件删除
 - [ ] 路径alias别名(@page, @com, @utils, @config...)
-- [ ] cli脚手架
+- [x] cli脚手架 [点击查看](https://github.com/CaicoLeung/miniprogram-cli)
 
 ## 开始使用
 
