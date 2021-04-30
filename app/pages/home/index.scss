@@ -1,0 +1,35 @@
+.home-container {
+  .title {
+    font-size: 36rpx;
+    font-weight: 600;
+    margin: 36rpx 0 24rpx 24rpx;
+  }
+
+  .treasure-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20rpx;
+
+    .category {
+      width: 169.5rpx;
+      text-align: center;
+      margin-bottom: 28rpx;
+
+      .category-img {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+      }
+
+      .category-name {
+        color: #4A4A4A;
+        font-size: 26rpx;
+      }
+    }
+  }
+
+  .comment-list {
+    padding: 0 24rpx;
+  }
+}

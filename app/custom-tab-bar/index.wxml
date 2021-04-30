@@ -1,0 +1,17 @@
+<!--miniprogram/custom-tab-bar/home.wxml-->
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view wx:for="{{list}}"
+              wx:key="index"
+              class="tab-bar-item {{ 'tab-bar-item' + (index + 1) }}"
+              data-path="{{item.pagePath}}"
+              data-index="{{index}}"
+              bind:tap="switchTab"
+  >
+    <view class="tabbar-item-icon">
+      <image src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+      <view class="red-dot" hidden="{{!showRedDot}}"></view>
+    </view>
+    <view class="tabbar-name {{selected === index && 'selected-style'}}">{{item.text}}</view>
+  </view>
+</view>

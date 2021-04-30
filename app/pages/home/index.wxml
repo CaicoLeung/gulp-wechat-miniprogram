@@ -1,0 +1,3 @@
+<view class="home-container">
+  <h1>{{motto}}</h1>
+</view>

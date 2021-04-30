@@ -1,0 +1,28 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"miniprogramRoot": "./",
+	"compileType": "miniprogram",
+	"libVersion": "2.16.0",
+	"projectname": "小程序",
+	"scripts": {
+		"beforeCompile": "npm run tsc",
+		"beforePreview": "npm run tsc",
+		"beforeUpload": "npm run tsc"
+	},
+	"setting": {
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "miniprogram/package.json",
+        "miniprogramNpmDistDir": "./"
+      }
+    ]
+  },
+	"appid": "",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}
