@@ -41,6 +41,7 @@
     "@types/gulp-imagemin": "^7.0.0",
     "@types/gulp-rename": "0.0.33",
     "@types/gulp-sourcemaps": "0.0.32",
+    "@types/gulp-typescript": "^2.13.0",
     "@types/gulp-uglify": "^3.0.6",
     "@types/jsonfile": "^5.0.0",
     "@types/lodash": "^4.14.168",
@@ -82,14 +83,12 @@
     "stylelint": "^13.2.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",
+    "ts-node": "^9.1.1",
     "typescript": "^4.2.4",
     "validate-commit-msg": "^2.14.0",
     "yaml": "^1.10.2",
     "yargs": "^15.3.0"
   },
-  "eslintIgnore": [
-    "dist/**/*.js"
-  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
