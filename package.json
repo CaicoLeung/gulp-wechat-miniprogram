@@ -24,7 +24,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn stylelint && yarn lint"
+      "pre-commit": "echo '检查css和js代码格式...' && yarn stylelint && yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "author": "caico",
