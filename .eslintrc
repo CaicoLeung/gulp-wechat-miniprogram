@@ -1,9 +1,7 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "root": true,
   "extends": [
-    "prettier",
-    "standard",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -18,8 +16,10 @@
       "files": ["*.ts", "*.tsx"],
       "parser": "@typescript-eslint/parser",
       "plugins": [
-        "prettier",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "eslint-plugin-promise",
+        "eslint-plugin-prettier",
+        "eslint-plugin-import"
       ]
     }
   ],
@@ -28,14 +28,14 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "globalReturn": false,
-      "impliedStrict": false,
+      "impliedStrict": true,
       "jsx": false
     }
   },
   "env": {
     "es6": true,
     "node": true,
-    "commonjs": false,
+    "commonjs": true,
     "mocha": true
   },
   "globals": {
