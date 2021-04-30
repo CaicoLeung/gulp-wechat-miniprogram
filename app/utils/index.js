@@ -1,4 +1,3 @@
-import MD5JS from './MD5'
 import config from '../config/index'
 
 const formatNumber = (n: number) => {
