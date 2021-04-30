@@ -1,4 +1,4 @@
-export default Page({
+Page({
   data: {
     motto: 'Hello CaicoLeung!',
     userInfo: {}
@@ -13,5 +13,9 @@ export default Page({
         selected: 0
       })
     }
+  },
+  test() {
+    const a = 1111111
+    console.log(a)
   }
 })
