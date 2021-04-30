@@ -1,0 +1,10 @@
+<view class="publish-main-container">
+  <button class="publish-main-button"
+          disabled="{{disabled}}"
+          bind:tap="submit"
+          open-type="{{!isUserInfoUpdate && 'getUserInfo'}}"
+          bind:getuserinfo="updateUserInfo"
+  >
+      <text><slot>发布</slot></text>
+  </button>
+</view>

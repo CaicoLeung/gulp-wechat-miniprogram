@@ -1,0 +1,166 @@
+page {
+  background: #000000;
+}
+.publish-edit-container {
+  width: 100%;
+  .source-preview {
+    width: 100%;
+    height: 100vh;
+    .source-preview-item {
+      position: relative;
+      .source-preview-entity {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+      }
+      .selected-tag {
+        padding: 0 12rpx 0 16rpx;
+        height: 44rpx;
+        border: 1rpx solid #FFFFFF;
+        border-radius: 22rpx;
+        background: rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 140rpx;
+        left: 32rpx;
+        z-index: 20;
+        .tag-small-icon {
+          width: 22rpx;
+        }
+        text {
+          text-align: center;
+          padding: 0 10rpx 0 8rpx;
+          color: #FFFFFF;
+          font-weight: 600;
+        }
+        .delete-tag-hander {
+          width: 24rpx;
+        }
+      }
+      .edit-buttons {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 40rpx;
+        z-index: 20;
+        padding: 0 32rpx;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .tag-select-hander {
+          display: flex;
+          align-items: center;
+          image.tag-icon {
+            width: 40rpx;
+            margin-right: 16rpx;
+          }
+          text {
+            font-size: 30rpx;
+            font-weight: 600;
+            color: #FFFFFF;
+          }
+        }
+        .confirm-hander {
+          width: 168rpx;
+          height: 58rpx;
+          border-radius: 34rpx;
+          display: table;
+          text-align: center;
+          background-image: linear-gradient(to right, #FE6495, #F44A48);
+          text {
+            color: #FFFFFF;
+            font-size: 31rpx;
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+      }
+      .actionSheet {
+        width: 100%;
+        border-radius: 24rpx 24rpx 0 0;
+        background: #000000;
+        opacity: 0.85;
+        .actionSheet-head {
+          display: table;
+          width: 100%;
+          height: 110rpx;
+          text-align: center;
+          border-bottom: 1rpx solid #E6E6E6;
+          text {
+            display: table-cell;
+            vertical-align: middle;
+            color: #FFFFFF;
+            font-size: 32rpx;
+          }
+        }
+        .actionSheet-list {
+          padding: 0 32rpx;
+          .actionSheet-item {
+            display: table;
+            width: 100%;
+            height: 88rpx;
+            text-align: left;
+            border-bottom: 1rpx solid #D9D9D9;
+            &:last-of-type {
+              border-bottom: none;
+            }
+            text {
+              display: table-cell;
+              vertical-align: middle;
+              color: #FFFFFF;
+              font-size: 32rpx;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      .top-mark, .bottom-mark {
+        position: absolute;
+        width: 100%;
+        z-index: 15;
+      }
+      .top-mark {
+        height: 124rpx;
+        top: 0;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+      }
+      .bottom-mark {
+        height: 200rpx;
+        bottom: 0;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+      }
+    }
+  }
+  .confirm-actionSheet {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 24rpx 24rpx 0 0;
+    text-align: center;
+    .actionSheet-head, .actionSheet-confirm, .actionSheet-cancel {
+      width: 100%;
+      height: 106rpx;
+      display: table;
+      text {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+    .actionSheet-head {
+      padding: 0 20rpx;
+      border-bottom: 1px solid #F5F5F5;
+      color: #888888;
+      font-size: 30rpx;
+    }
+    .actionSheet-confirm {
+      color: #FF335F;
+      font-size: 32rpx;
+    }
+    .actionSheet-cancel {
+      color: #666666;
+      font-size: 32rpx;
+      background: #F8F8F8;
+    }
+  }
+}

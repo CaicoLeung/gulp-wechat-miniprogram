@@ -1,0 +1,6 @@
+dist
+node_modules
+gulp
+app/miniprogram
+app/_template
+app/_component

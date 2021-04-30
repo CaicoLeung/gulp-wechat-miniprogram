@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发布",
+  "usingComponents": {
+    "footer-button": "/components/FooterButton/index",
+    "vant-popup": "@vant/weapp/popup/index"
+  }
+}

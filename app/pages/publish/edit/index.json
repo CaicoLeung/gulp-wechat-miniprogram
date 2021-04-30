@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "编辑",
+  "navigationBarBackgroundColor": "#000000",
+  "backgroundColor": "#000000",
+  "backgroundColorTop": "#000000",
+  "backgroundColorBottom": "#000000",
+  "navigationBarTextStyle": "white",
+  "disableScroll": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "navigation-bar": "/components/NavigationBar/index",
+    "vant-popup": "@vant/weapp/popup/index"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "lib",
+    "declaration": true,
+    "module": "CommonJS",
+    "target": "es5",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "lib": [
+      "DOM",
+      "es2015",
+      "es2016",
+      "es2017"
+    ],
+    "types": ["gulp", "node_modules/@types"]
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "app/services"
+  ]
+}
