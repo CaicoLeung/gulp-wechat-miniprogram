@@ -1,5 +1,4 @@
 import { ISelectedSourceItem } from '../libs/publish'
-import MD5JS from './MD5'
 import config from '../config/index'
 
 const formatNumber = (n: number) => {
@@ -49,29 +48,6 @@ export const WXGetImageInfoAsync = (
       }
     })
   })
-}
-
-export const getSignature = <T extends { c_p: Record<string, unknown> }>(target: T): T & { signature: string, c_p: string } => {
-  let param = ''
-  const c_p = JSON.stringify(target.c_p)
-  try {
-    const tmpObj: Record<string, string> = { ...target, c_p }
-    // 排序进行签名
-    const objAsArray = Object.keys(tmpObj).sort()
-    for (const key of objAsArray) {
-      if (Object.prototype.hasOwnProperty.call(tmpObj, key)) {
-        const value = tmpObj[key]
-        param += `${key}=${encodeURIComponent(value)}&`
-      }
-    }
-  } catch (error) {
-    console.error('签名过程出错: ', error)
-  }
-  return {
-    ...target,
-    signature: MD5JS(`${param}${config.aeskey}`),
-    c_p
-  }
 }
 
 export const WXSubscribeMessage = (tmplIds: string[]): Promise<boolean> => {

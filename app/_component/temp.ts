@@ -1,4 +1,0 @@
-Component({
-  properties: {},
-  methods: {}
-})
