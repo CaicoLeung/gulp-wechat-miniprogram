@@ -13,46 +13,18 @@
 - [x] 支持Stylelint
 - [x] 命令行一键创建page和component目录(wxml, ts, wxss, json文件)
 - [x] watch热更新
+- [x] cli脚手架
 
 ## 目标
 
 - [ ] 监听文件删除
 - [ ] 路径alias别名(@page, @com, @utils, @config...)
-- [x] cli脚手架 [点击查看](https://github.com/CaicoLeung/miniprogram-cli)
 
 ## 开始使用
 
-1. 确保已全局安装gulp
+1. 安装本项目的脚手架: [mp-cli](https://github.com/CaicoLeung/miniprogram-cli)
 
-    ```bash
-    npm install -g gulp gulp-cli
-    ```
-
-2. git clone 代码
-
-    ```bash
-    git clone git@github.com:CaicoLeung/gulp-wechat-miniprogram.git
-    ```
-
-3. 进入目录, 并安装依赖
-
-    ```bash
-    cd gulp-wechat-miniprogram && npm install
-    ```
-
-4. 创建page **(Page目录会生成{name}/index.[ts|wxss|wxmljson]文件, 并自动往app.json的"pages"添加条目)**
-
-    ```bash
-    gulp create --page [name]
-    ```
-
-5. 创建component **(Components目录会生成{name}/index.[ts|wxss|wxmljson]文件)**
-
-    ```bash
-    gulp create --component [name]
-    ```
-
-6. 开始, 生成dist目录, 用微信开发者工具打开dist目录
+2. 开始, 生成dist目录, 用微信开发者工具打开dist目录
 
     ```bash
     npm run start
