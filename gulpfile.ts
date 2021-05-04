@@ -3,7 +3,6 @@ import { imgFiles, jsFiles, jsonFiles, miniprogramSource, projectconfig, sassFil
 import child_process from 'child_process'
 import { cleanDistDir } from './gulp/Clean'
 import colors from 'colors'
-import { create } from './gulp/ArgsHandle'
 import fs from 'fs'
 import gulp from 'gulp'
 import { initProjectConfig } from './gulp/InitProjectConfig'
@@ -43,7 +42,6 @@ gulp.task(jsonCopy)
 gulp.task(imagesCopy)
 gulp.task(tsParser)
 gulp.task(sassParser)
-gulp.task(create)
 gulp.task(install_npm)
 gulp.task(initProjectConfig)
 
