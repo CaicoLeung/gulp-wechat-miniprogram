@@ -1,5 +1,4 @@
 import { ISelectedSourceItem } from '../libs/publish'
-import config from '../config/index'
 
 const formatNumber = (n: number) => {
   const str = n.toString()
